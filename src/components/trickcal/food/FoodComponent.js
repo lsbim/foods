@@ -70,7 +70,7 @@ const FoodComponent = () => {
                                                 }`}
                                             onClick={() => setTarget(item)}>
                                             <img
-                                                src={`/images/음식/${l}/${item}.png`}
+                                                src={`${process.env.PUBLIC_URL}/images/음식/${l}/${item}.png`}
                                                 className="h-[60px]  w-auto object-contain m-2"
                                                 alt={item}
                                                 title={item} />
@@ -113,7 +113,7 @@ const FoodComponent = () => {
                                                 }`}
                                             onClick={() => setTarget(c)}>
                                             <img
-                                                src={`/images/사도/${t}/${c}.png`}
+                                                src={`${process.env.PUBLIC_URL}/images/사도/${t}/${c}.png`}
                                                 className="h-[60px]  w-auto object-contain m-2"
                                                 alt={c}
                                                 title={c} />
