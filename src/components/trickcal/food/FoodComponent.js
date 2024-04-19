@@ -153,7 +153,6 @@ const FoodComponent = () => {
                                             <span className="text-[12px] flex justify-center items-center text-wrap font-bold">
                                                 {c}
                                             </span>
-                                            <div className="absolute bottom-0 left-0 right-0 h-1 bg-transparent group-hover:bg-orange-200 group-hover:h-2 transition-all duration-300"></div>
                                         </div>
 
                                     ))}

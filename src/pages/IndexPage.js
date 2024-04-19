@@ -1,6 +1,15 @@
+import { useEffect } from "react";
+import ReactGA from 'react-ga';
 import FoodComponent from "../components/trickcal/food/FoodComponent";
 
 const IndexPage = () => {
+
+    function MyPage() {
+        useEffect(() => {
+            ReactGA.pageview(window.location.pathname + window.location.search);
+        }, []);
+    }
+
     return (
         <div className="flex justify-center">
             <div className="w-[1200px]">
