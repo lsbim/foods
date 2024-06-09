@@ -7,6 +7,8 @@ const QTooltipComponent = ({ name, children }) => {
   const tooltipRef = useRef(null);
   const [tooltipText, setTooltipText] = useState([]);
 
+  // 폐기------------------------------------------------------------------------------------
+
   useEffect(() => {
     if (charQuest[name]) {
       const entries = Object.entries(charQuest[name]);
