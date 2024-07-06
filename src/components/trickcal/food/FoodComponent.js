@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { charInfo, charType, typeList } from "../../../commons/char/charInfo";
 import { foodGrade, foodGradeList } from "../../../commons/food/foodInfo";
-import QTooltipComponent from "../../../utils/tooltips/QTooltipComponent";
 
 // 선호도 배경색 설정
 // ${
