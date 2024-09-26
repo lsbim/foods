@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/foods/static/css/main.ff512ca1.css",
-    "main.js": "/foods/static/js/main.e5a4024e.js",
+    "main.js": "/foods/static/js/main.8d742a29.js",
     "static/js/206.02781fb5.chunk.js": "/foods/static/js/206.02781fb5.chunk.js",
     "static/media/logo.svg": "/foods/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/foods/index.html"
   },
   "entrypoints": [
     "static/css/main.ff512ca1.css",
-    "static/js/main.e5a4024e.js"
+    "static/js/main.8d742a29.js"
   ]
 }
