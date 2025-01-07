@@ -9,12 +9,9 @@ import { foodGrade, foodGradeList } from "../../../commons/food/foodInfo";
 //         target === item ? 'bg-orange-200' : ''
 // }
 
-const FoodComponent = () => {
+const FoodComponent = ({target, setTarget, verylike, setVerylike, like, setLike, hate, setHate}) => {
 
-    const [target, setTarget] = useState('');
-    const [verylike, setVerylike] = useState([]);
-    const [like, setLike] = useState([]);
-    const [hate, setHate] = useState([]);
+
 
     useEffect(() => {
         const isChar = charInfo[target];
@@ -52,8 +49,6 @@ const FoodComponent = () => {
         }
     }
 
-
-
     return (
         <div className="mt-24 mb-12">
             <div>
@@ -62,7 +57,7 @@ const FoodComponent = () => {
                         {target}
                     </span>
                 </div> */}
-                <div className="flex">
+                <div className="flex justify-between">
                     {/* 음식칸 */}
                     <div className="md:mr-8 mr-2 max-w-[47%]">
                         {foodGradeList.map((l, i) => (

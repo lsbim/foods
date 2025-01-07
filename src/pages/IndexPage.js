@@ -1,8 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ReactGA from 'react-ga';
 import FoodComponent from "../components/trickcal/food/FoodComponent";
+import SelectedObjComponent from "../components/trickcal/food/SelectedObjComponent";
+import Header from "../layouts/Header";
 
 const IndexPage = () => {
+
+    const [target, setTarget] = useState('');
+    const [verylike, setVerylike] = useState([]);
+    const [like, setLike] = useState([]);
+    const [hate, setHate] = useState([]);
 
     function MyPage() {
         useEffect(() => {
@@ -10,13 +17,27 @@ const IndexPage = () => {
         }, []);
     }
 
+    console.log("target: ", target)
+
     return (
         <div className="flex justify-center">
-            <div className="w-[1200px]">
-                <span className="flex justify-center mt-2 mb-2 md:text-[36px] text-[24px] font-bold">
-                    트릭컬 연회장 음식 호불호
-                </span>
-                <FoodComponent></FoodComponent>
+            <div className="w-[1200px] relative">
+
+                <Header />
+                <FoodComponent
+                    target={target}
+                    setTarget={setTarget}
+                    verylike={verylike}
+                    setVerylike={setVerylike}
+                    like={like}
+                    setLike={setLike}
+                    hate={hate}
+                    setHate={setHate}
+                />
+
+                {/* {target && target?.length > 0 &&
+                    <SelectedObjComponent />
+                } */}
             </div>
         </div>
     );
