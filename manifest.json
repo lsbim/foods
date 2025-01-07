@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "트릭컬 연회장",
+  "name": "트릭컬 연회장 음식 호불호",
   "icons": [
     {
       "src": "favicon.ico",
