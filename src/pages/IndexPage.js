@@ -17,7 +17,7 @@ const IndexPage = () => {
         }, []);
     }
 
-    console.log("target: ", target)
+    // console.log("target: ", target)
 
     return (
         <div className="flex justify-center">
