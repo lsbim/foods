@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactGA from 'react-ga';
 import FoodComponent from "../components/trickcal/food/FoodComponent";
-import SelectedObjComponent from "../components/trickcal/food/SelectedObjComponent";
+import Footer from "../layouts/Footer";
 import Header from "../layouts/Header";
 
 const IndexPage = () => {
@@ -38,6 +38,7 @@ const IndexPage = () => {
                 {/* {target && target?.length > 0 &&
                     <SelectedObjComponent />
                 } */}
+                <Footer />
             </div>
         </div>
     );
