@@ -10,7 +10,8 @@ const IndexPage = () => {
     const [verylike, setVerylike] = useState([]);
     const [like, setLike] = useState([]);
     const [hate, setHate] = useState([]);
-
+    const [soso, setSoso] = useState([]);
+    
     function MyPage() {
         useEffect(() => {
             ReactGA.pageview(window.location.pathname + window.location.search);
@@ -33,6 +34,8 @@ const IndexPage = () => {
                     setLike={setLike}
                     hate={hate}
                     setHate={setHate}
+                    soso={soso}
+                    setSoso={setSoso}
                 />
 
                 {/* {target && target?.length > 0 &&

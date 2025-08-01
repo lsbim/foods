@@ -9,7 +9,7 @@ import { foodGrade, foodGradeList } from "../../../commons/food/foodInfo";
 //         target === item ? 'bg-orange-200' : ''
 // }
 
-const FoodComponent = ({target, setTarget, verylike, setVerylike, like, setLike, hate, setHate}) => {
+const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike, hate, setHate, soso, setSoso }) => {
 
 
 
@@ -19,10 +19,12 @@ const FoodComponent = ({target, setTarget, verylike, setVerylike, like, setLike,
             setVerylike(isChar.verylike)
             setLike(isChar.like)
             setHate(isChar.hate)
+            setSoso(isChar.soso)
         } else {
             const verylikeChars = [];
             const likeChars = [];
             const hateChars = [];
+            const sosoChars = [];
 
             Object.entries(charInfo).forEach(([char, info]) => {
                 if (info.verylike?.includes(target)) {
@@ -34,10 +36,14 @@ const FoodComponent = ({target, setTarget, verylike, setVerylike, like, setLike,
                 if (info.hate?.includes(target)) {
                     hateChars.push(char);
                 }
+                if (info.soso?.includes(target)) {
+                    sosoChars.push(char);
+                }
             });
             setVerylike(verylikeChars);
             setLike(likeChars);
             setHate(hateChars);
+            setSoso(sosoChars);
         }
     }, [target])
 
@@ -83,10 +89,11 @@ const FoodComponent = ({target, setTarget, verylike, setVerylike, like, setLike,
                                         <div
                                             key={i}
                                             className={`hover:bg-orange-200 cursor-pointer group relative 
-                                                ${verylike?.includes(item) ? 'bg-gradient-to-br from-yellow-200 to-sky-600' :
-                                                    like?.includes(item) ? 'bg-green-400' :
-                                                        hate?.includes(item) ? 'bg-red-500' :
-                                                            target === item ? 'bg-orange-300' : ''
+                                                ${verylike?.includes(item) ? 'bg-gradient-to-br from-yellow-200 to-sky-600'
+                                                    : like?.includes(item) ? 'bg-green-400'
+                                                        : hate?.includes(item) ? 'bg-red-500'
+                                                            : soso?.includes(item) ? 'bg-yellow-300'
+                                                                : target === item ? 'bg-orange-300' : ''
                                                 }`}
                                             onClick={() => handleSetTarget(item)}>
                                             <img
@@ -119,10 +126,11 @@ const FoodComponent = ({target, setTarget, verylike, setVerylike, like, setLike,
                                         <div
                                             key={i}
                                             className={`hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative md:w-[70px] w-[60px] mx-[1px]
-                                            ${verylike?.includes(c) ? 'bg-gradient-to-br from-yellow-200 to-sky-600' :
-                                                    like?.includes(c) ? 'bg-green-400' :
-                                                        hate?.includes(c) ? 'bg-red-500' :
-                                                            target === c ? 'bg-orange-300' : ''
+                                            ${verylike?.includes(c) ? 'bg-gradient-to-br from-yellow-200 to-sky-600'
+                                                    : like?.includes(c) ? 'bg-green-400'
+                                                        : hate?.includes(c) ? 'bg-red-500'
+                                                            : soso?.includes(c) ? 'bg-yellow-300'
+                                                                : target === c ? 'bg-orange-300' : ''
                                                 }`}
                                             onClick={() => handleSetTarget(c)}>
 
