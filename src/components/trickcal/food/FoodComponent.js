@@ -56,7 +56,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
     }
 
     return (
-        <div className="mt-24 mb-12">
+        <div className="">
             <div>
                 {/* <div className="flex justify-center mb-2">
                     <span className="font-bold text-[24px]">
@@ -109,6 +109,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                     </div>
                     {/* 사도칸 */}
                     <div className="max-w-[47%]">
+                        {/* 성격 블럭 */}
                         {typeList.map((t, i) => (
                             <div key={i} className={`flex flex-wrap border-x-2 border-black`}>
                                 <div className={`h-6 w-full font-bold
@@ -122,6 +123,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                     </span>
                                 </div>
                                 <div className="flex flex-wrap md:justify-start justify-center">
+                                    {/* 캐릭터 블럭 */}
                                     {charType[t].map((c, i) => (
                                         <div
                                             key={i}
@@ -136,7 +138,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
 
                                             <div className="relative flex justify-center text-[10px]">
                                                 <img
-                                                    src={`${process.env.PUBLIC_URL}/images/사도/${t}/${c}.png`}
+                                                    src={`${process.env.PUBLIC_URL}/images/사도/볼/${c}.png`}
                                                     className="h-[60px] w-auto object-contain m-2"
                                                     alt={c}
                                                     title={c} />
@@ -147,7 +149,9 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                                     title={c} />
                                             </div>
                                             <span className="text-[12px] flex justify-center items-center text-wrap font-bold">
-                                                {c}
+                                                <span className=" truncate">
+                                                    {c}
+                                                </span>
                                             </span>
                                         </div>
 
