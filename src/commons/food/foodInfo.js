@@ -1,6 +1,7 @@
 const foodGradeList = [5, 4, 3, 2, 1, 0];
 
-const foodGrade = {};
+const foodGrade = {}; // 등급 내 음식 목록
+const foodBonus = {}; // 음식이 제공하는 친밀도
 
 foodGrade[5] = ["트리플 민트 초코 아이스크림", "해적 만화 고기 구이", "머스크 멜론 보코치니", "보물 타르트", "1급 비밀의 포도주스",
     "찹쌀밥 한 공기", "악령 푸딩", "딥다크 초콜릿 아이스크림"]
@@ -15,4 +16,35 @@ foodGrade[1] = ["딸기 케이크", "캬라멜 팝콘", "캔 사료", "우주식
 // 이벤트음식
 foodGrade[0] = ["새콤비타F", "얌얌비타C", "송편", "부쉬 드 노엘", "아몬드 로쉐", "떡국", "에심당 뽈사탕"];
 
-export { foodGrade, foodGradeList }
+foodBonus[5] = {
+    verylike: '+101~103',
+    like: '+86~88',
+    soso: '+61~63',
+    hate: '+36~38'
+}
+foodBonus[4] = {
+    verylike: '+83~85',
+    like: '+71~73',
+    soso: '+51~53',
+    hate: '+31~33'
+}
+foodBonus[3] = {
+    verylike: '+65~67',
+    like: '+56~58',
+    soso: '+41~43',
+    hate: '+26~28'
+}
+foodBonus[2] = {
+    verylike: '+47~49',
+    like: '+41~43',
+    soso: '+31~33',
+    hate: '+21~23'
+}
+foodBonus[1] = {
+    verylike: '+29~31',
+    like: '+26~28',
+    soso: '+21~23',
+    hate: '+16~18'
+}
+
+export { foodGrade, foodGradeList, foodBonus }
