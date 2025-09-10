@@ -75,11 +75,15 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                                     : l === 1 ? 'bg-[rgb(193,193,193)]'
                                                         : l === 0 ? 'bg-[rgb(230,230,230)]' : ''}`}>
 
-                                    {l === 0 && (
+                                    {l === 0 ? (
                                         <div className="pl-2">
                                             <span className="md:text-[15px] text-[0px]">이벤트 음식은 대부분 좋아합니다.</span>
                                             <span className="md:text-[0px] text-[13px]">이벤트 음식</span>
                                         </div>
+                                    ) : (
+                                        <div
+                                            className="pl-2 sm:text-[14px] text-[11px] font-semibold flex flex-wrap gap-x-2"
+                                            title="그럭저럭">💛 {foodBonus[l]?.soso}</div>
                                     )}
 
                                     {l !== 0 && target && charInfo[target] && (
@@ -91,10 +95,6 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                             {/* like 음식이 이 등급에 있는지 확인하고 표시 */}
                                             {foodGrade[l].some(item => like?.includes(item)) && (
                                                 <div title="좋아함">💚 {foodBonus[l]?.like}</div>
-                                            )}
-                                            {/* soso 음식이 이 등급에 있는지 확인하고 표시 */}
-                                            {foodGrade[l].some(item => soso?.includes(item)) && (
-                                                <div title="그럭저럭">💛 {foodBonus[l]?.soso}</div>
                                             )}
                                             {/* hate 음식이 이 등급에 있는지 확인하고 표시 */}
                                             {foodGrade[l].some(item => hate?.includes(item)) && (
