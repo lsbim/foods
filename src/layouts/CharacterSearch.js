@@ -49,7 +49,7 @@ const CharacterSearch = ({ setTarget }) => {
     // console.log(getHistory())
 
     return (
-        <div className="fixed flex flex-col md:flex-row items-center justify-center gap-x-4 py-2 bg-white w-full z-10">
+        <div className="fixed flex flex-col md:flex-row items-center justify-center gap-x-4 py-2 sm:py-4 bg-white w-full z-10 border-b-2 border-gray-200">
             <div className="text-[24px] font-bold">
                 트릭컬 연회장 음식 호불호
             </div>

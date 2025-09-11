@@ -54,6 +54,43 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
         }
     }
 
+    const targetColor = (item) => {
+
+        return verylike?.includes(item) ? 'bg-gradient-to-br from-yellow-200 to-sky-600'
+            : like?.includes(item) ? 'bg-green-400'
+                : hate?.includes(item) ? 'bg-red-500'
+                    : soso?.includes(item) ? 'bg-yellow-300'
+                        : target === item ? 'bg-orange-300' : '';
+    }
+
+    const foodListHeaderColor = (l) => {
+
+        return l === 5 ? 'bg-[rgb(244,232,163)]'
+            : l === 4 ? 'bg-[rgb(196,142,253)]'
+                : l === 3 ? 'bg-[rgb(109,175,246)]'
+                    : l === 2 ? 'bg-[rgb(114,216,133)]'
+                        : l === 1 ? 'bg-[rgb(193,193,193)]'
+                            : l === 0 ? 'bg-[rgb(230,230,230)]' : '';
+    }
+
+    const charListHeaderColor = (t) => {
+
+        return t === '순수' ? 'bg-[rgb(102,193,124)]'
+            : t === '냉정' ? 'bg-[rgb(131,185,235)]'
+                : t === '광기' ? 'bg-[rgb(235,131,154)]'
+                    : t === '활발' ? 'bg-[rgb(235,219,131)]'
+                        : t === '우울' ? 'bg-[rgb(198,131,236)]' : '';
+    }
+
+    const isNotTarget = (item) => {
+
+        return (verylike?.includes(item) ||
+            like?.includes(item) ||
+            hate.includes(item)) ||
+            target === item ||
+            target === '';
+    }
+
     return (
         <div className="">
             <div>
@@ -67,13 +104,8 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                     <div className="md:mr-8 mr-2 max-w-[47%]">
                         {foodGradeList.map((l, i) => (
                             <div key={i} className="bg-white border-x-2 border-black">
-                                <div className={`min-h-6 flex items-center py-[1px]
-                                ${l === 5 ? 'bg-[rgb(244,232,163)]'
-                                        : l === 4 ? 'bg-[rgb(196,142,253)]'
-                                            : l === 3 ? 'bg-[rgb(109,175,246)]'
-                                                : l === 2 ? 'bg-[rgb(114,216,133)]'
-                                                    : l === 1 ? 'bg-[rgb(193,193,193)]'
-                                                        : l === 0 ? 'bg-[rgb(230,230,230)]' : ''}`}>
+                                <div className={`min-h-6 flex items-center py-1
+                                ${foodListHeaderColor(l)}`}>
 
                                     {l === 0 ? (
                                         <div className="pl-2">
@@ -82,21 +114,19 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                         </div>
                                     ) : (
                                         <div
-                                            className="pl-2 sm:text-[14px] text-[11px] font-semibold flex flex-wrap gap-x-2"
+                                            className="pl-2 sm:text-[14px] text-[11px] font-semibold whitespace-nowrap"
                                             title="그럭저럭">💛 {foodBonus[l]?.soso}</div>
                                     )}
 
                                     {l !== 0 && target && charInfo[target] && (
-                                        <div className="pl-2 sm:text-[14px] text-[11px] font-semibold flex flex-wrap gap-x-2">
+                                        <div className="pl-2 sm:text-[14px] text-[11px] font-semibold flex flex-wrap gap-x-2 mr-2">
                                             {/* verylike 음식이 이 등급에 있는지 확인하고 표시 */}
                                             {foodGrade[l].some(item => verylike?.includes(item)) && (
                                                 <div title="매우좋아함">💙 {foodBonus[l]?.verylike}</div>
                                             )}
-                                            {/* like 음식이 이 등급에 있는지 확인하고 표시 */}
                                             {foodGrade[l].some(item => like?.includes(item)) && (
                                                 <div title="좋아함">💚 {foodBonus[l]?.like}</div>
                                             )}
-                                            {/* hate 음식이 이 등급에 있는지 확인하고 표시 */}
                                             {foodGrade[l].some(item => hate?.includes(item)) && (
                                                 <div title="싫어함">😡 {foodBonus[l]?.hate}</div>
                                             )}
@@ -108,17 +138,13 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                     {foodGrade[l].map((item, i) => (
                                         <div
                                             key={i}
-                                            className={`hover:bg-orange-200 cursor-pointer group relative 
-                                                ${verylike?.includes(item) ? 'bg-gradient-to-br from-yellow-200 to-sky-600'
-                                                    : like?.includes(item) ? 'bg-green-400'
-                                                        : hate?.includes(item) ? 'bg-red-500'
-                                                            : soso?.includes(item) ? 'bg-yellow-300'
-                                                                : target === item ? 'bg-orange-300' : ''
-                                                }`}
+                                            className={`hover:bg-orange-200 cursor-pointer group relative ${targetColor(item)}`}
                                             onClick={() => handleSetTarget(item)}>
+                                            {/* 선택되지 않은 음식은 투명도 40% */}
                                             <img
                                                 src={`${process.env.PUBLIC_URL}/images/음식/${l}/${item}.png`}
-                                                className="md:h-[60px] h-[40px] w-auto object-contain m-2"
+                                                className={`md:h-[60px] h-[40px] w-auto object-contain m-2 aspect-square
+                                                    ${isNotTarget(item) || 'opacity-60'}`}
                                                 alt={item}
                                                 title={item} />
                                         </div>
@@ -133,11 +159,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                         {typeList.map((t, i) => (
                             <div key={i} className={`flex flex-wrap border-x-2 border-black`}>
                                 <div className={`h-6 w-full font-bold
-                                ${t === '순수' ? 'bg-[rgb(102,193,124)]'
-                                        : t === '냉정' ? 'bg-[rgb(131,185,235)]'
-                                            : t === '광기' ? 'bg-[rgb(235,131,154)]'
-                                                : t === '활발' ? 'bg-[rgb(235,219,131)]'
-                                                    : t === '우울' ? 'bg-[rgb(198,131,236)]' : ''}`}>
+                                ${charListHeaderColor(t)}`}>
                                     <span className="pl-2">
                                         {t}
                                     </span>
@@ -148,12 +170,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                         <div
                                             key={i}
                                             className={`hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative md:w-[70px] w-[60px] mx-[1px]
-                                            ${verylike?.includes(c) ? 'bg-gradient-to-br from-yellow-200 to-sky-600'
-                                                    : like?.includes(c) ? 'bg-green-400'
-                                                        : hate?.includes(c) ? 'bg-red-500'
-                                                            : soso?.includes(c) ? 'bg-yellow-300'
-                                                                : target === c ? 'bg-orange-300' : ''
-                                                }`}
+                                            ${targetColor(c)}`}
                                             onClick={() => handleSetTarget(c)}>
 
                                             <div className="relative flex justify-center text-[10px]">
