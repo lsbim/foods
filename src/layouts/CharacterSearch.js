@@ -71,8 +71,8 @@ const CharacterSearch = ({ setTarget }) => {
                 </div>
                 {open && (
                     <div className="absolute z-10 bg-white text-[12px] flex shadow-lg shadow-gray-300 w-full pl-2 pr-4">
-                        <div className="flex flex-wrap sm:min-w-[276px] w-[276px] pr-4 content-start gap-y-1 max-h-[500px] overflow-y-scroll bg-red">
-                            {searchList && searchList.map(name => (
+                        <div className={`flex sm:min-w-[276px] w-[276px] pr-4 gap-y-1 max-h-[435.6px] bg-red ${searchList.length > 0 && 'flex-wrap content-start overflow-y-scroll'}`}>
+                            {searchList.length > 0 ? searchList.map(name => (
                                 <div
                                     onClick={() => {
                                         setTarget(name);
@@ -94,7 +94,16 @@ const CharacterSearch = ({ setTarget }) => {
                                         </div>
                                     </div>
                                 </div>
-                            ))}
+                            )) : (
+                                <div className="flex flex-col gap-y-2 items-center justify-center mx-auto text-gray-400 font-bold">
+                                    <span>
+                                        초성으로 검색할 수 있습니다.
+                                    </span>
+                                    <span>
+                                        ex) ㅁㅌ → 뮤트
+                                    </span>
+                                </div>
+                            )}
                         </div>
                         <div className="w-full gap-y-1 flex-col flex">
                             {getHistory().length > 0 && getHistory().map(recent => (
