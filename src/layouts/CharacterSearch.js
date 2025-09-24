@@ -96,7 +96,7 @@ const CharacterSearch = ({ setTarget }) => {
                                 </div>
                             )) : (
                                 <div className="flex flex-col gap-y-2 items-center justify-center mx-auto text-gray-400 font-bold">
-                                    <span>
+                                    <span className=" md:text-[14px] text-[10px]">
                                         초성으로 검색할 수 있습니다.
                                     </span>
                                     <span>
