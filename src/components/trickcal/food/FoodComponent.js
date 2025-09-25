@@ -50,7 +50,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
     const targetColor = (item) => {
 
         return verylike?.includes(item) ? 'bg-gradient-to-br from-[rgb(255,168,160)] to-[rgb(14,165,233)]'
-            : like?.includes(item) ? 'bg-[rgb(178,227,26)]'
+            : like?.includes(item) ? 'bg-lime-500'
                 : hate?.includes(item) ? 'bg-red-500'
                     : soso?.includes(item) ? 'bg-yellow-300'
                         : target === item ? 'bg-orange-300' : '';
@@ -72,7 +72,8 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             : t === '냉정' ? 'bg-[rgb(131,185,235)]'
                 : t === '광기' ? 'bg-[rgb(235,131,154)]'
                     : t === '활발' ? 'bg-[rgb(235,219,131)]'
-                        : t === '우울' ? 'bg-[rgb(198,131,236)]' : '';
+                        : t === '우울' ? 'bg-[rgb(198,131,236)]'
+                            : t === '공명' ? `bg-gradient-to-r from-[rgb(131,185,235)] to-[rgb(198,131,236)]` : '';
     }
 
     const isTargetAndLike = (item) => {
