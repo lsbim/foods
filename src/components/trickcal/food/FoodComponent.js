@@ -157,7 +157,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                                             alt={'좋아함'}
                                                             title={'좋아함'} />
                                                         <span>
-                                                            {foodBonus[l]?.verylike}
+                                                            {foodBonus[l]?.like}
                                                         </span>
                                                     </div>
                                                 )}
@@ -171,7 +171,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                                             alt={'싫어함'}
                                                             title={'싫어함'} />
                                                         <span>
-                                                            {foodBonus[l]?.verylike}
+                                                            {foodBonus[l]?.hate}
                                                         </span>
                                                     </div>
                                                 )}
