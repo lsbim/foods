@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
-import { charInfo, charType, typeList } from "../../../commons/char/charInfo";
-import { foodBonus, foodGrade, foodGradeList } from "../../../commons/food/foodInfo";
+import { useEffect } from "react";
+import { charInfo, charType, typeList } from "../../../data/char/charInfo";
+import { translationTr } from "../../../data/i18n/i18n";
+import { useLanguage } from "../../../util/langUtils";
 
 const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike, hate, setHate, soso, setSoso }) => {
 
+    const { foodGradeList, foodGrade, foodBonus, language, server } = useLanguage();
+
+    // console.log(language)
 
     useEffect(() => {
         const isChar = charInfo[target];
@@ -104,17 +108,19 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                 </div> */}
                 <div className="flex justify-between">
                     {/* 음식칸 */}
-                    <div className="md:mr-8 mr-2 max-w-[47%]">
+                    <div className="relative md:mr-8 mr-2 max-w-[47%]">
                         {foodGradeList.map((l, i) => (
                             <div key={i} className="bg-white border-x-2 border-black">
                                 {/* 상단 색상칸 */}
-                                <div className={`min-h-6 py-1 ${foodListHeaderColor(l)}`}>
+                                <div className={`h-8 py-1 ${foodListHeaderColor(l)}`}>
                                     <div className="items-start md:flex md:flex-row hidden gap-x-3">
                                         {l === 0 ? (
-                                            <div className="pl-2">
-                                                <span className="md:text-[15px] text-[0px]">이벤트 음식은 대부분 좋아합니다.</span>
-                                                <span className="md:text-[0px] text-[13px]">이벤트 음식</span>
-                                            </div>
+                                            language === 'ko' ? (
+                                                <div className="pl-2">
+                                                    <span className="md:text-[15px] text-[0px]">이벤트 음식은 대부분 좋아합니다.</span>
+                                                    <span className="md:text-[0px] text-[13px]">이벤트 음식</span>
+                                                </div>
+                                            ) : (<></>)
                                         ) : (
                                             <div
                                                 className="pl-2 flex md:text-[14px] text-[11px] font-semibold whitespace-nowrap"
@@ -181,15 +187,15 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
 
                                 </div>
                                 {/* 음식 목록칸 */}
-                                <div className="flex flex-wrap text-[10px] gap-x-1">
+                                <div className="flex flex-wrap text-[10px]">
                                     {foodGrade[l].map((item, i) => (
                                         <div
                                             key={i}
-                                            className={`hover:bg-orange-200 cursor-pointer group relative ${targetColor(item)} `}
+                                            className={`p-[2px] hover:bg-orange-200 cursor-pointer group relative ${targetColor(item)} `}
                                             onClick={() => handleSetTarget(item)}>
                                             {/* 선택되지 않은 음식은 투명도 40% */}
                                             <img
-                                                src={`${process.env.PUBLIC_URL}/images/음식/${l}/${item}.png`}
+                                                src={`${process.env.PUBLIC_URL}/images/food/${item}.webp`}
                                                 className={`md:h-[60px] h-[40px] w-auto object-contain m-2 aspect-square
                                                     ${isTargetAndLike(item) || 'opacity-60'}`}
                                                 alt={item}
@@ -197,7 +203,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                             {howMuchLike(item) && (
                                                 <img
                                                     src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(item)}.webp`}
-                                                    className={`w-4 absolute top-[-3px] right-[-4px] rotate-12`}
+                                                    className={`w-5 z-10 absolute top-[-3px] right-[-4px] rotate-12`}
                                                     alt={item}
                                                     title={item} />
                                             )}
@@ -206,59 +212,69 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                 </div>
                             </div>
                         ))}
+                        {server !== 'kr' && (
+                            <div className="absolute -top-8 left-0 pl-2 text-[14px] font-bold">
+                                First Bonus: +40
+                            </div>
+                        )}
                     </div>
                     {/* 사도칸 */}
                     <div className="max-w-[47%]">
                         {/* 성격 블럭 */}
-                        {typeList.map((t, i) => (
+                        {typeList.map((p, i) => (
                             <div key={i} className={`flex flex-wrap border-x-2 border-black`}>
-                                <div className={`h-6 w-full font-bold ${charListHeaderColor(t)} flex py-1 items-center pl-1`}>
+                                <div className={`h-8 w-full font-bold ${charListHeaderColor(p)} flex py-1 items-center pl-1`}>
                                     <img
-                                        src={`${process.env.PUBLIC_URL}/images/icon/${t}.png`}
+                                        src={`${process.env.PUBLIC_URL}/images/icon/${p}.png`}
                                         className={`w-5 object-contain flex items-center`}
-                                        alt={t}
-                                        title={t} />
-                                    <span className="pl-1">
-                                        {t}
+                                        alt={translationTr('personality', p, language)}
+                                        title={translationTr('personality', p, language)} />
+                                    <span className="pl-1 py-1">
+                                        {translationTr('personality', p, language)}
                                     </span>
                                 </div>
                                 <div className="flex flex-wrap justify-start w-full">
                                     {/* 캐릭터 블럭 */}
-                                    {charType[t].map((c, i) => (
-                                        <div
-                                            key={i}
-                                            className={`hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative 
+                                    {charType[p].map((c, i) => {
+
+                                        const charName = translationTr('characters', c, language);
+
+                                        return (
+                                            <div
+                                                key={i}
+                                                className={`hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative p-1
                                             lg:w-[12.5%] md:w-[16.65%] xs:w-[25%] w-[33.3%]
                                             ${targetColor(c)}`}
-                                            onClick={() => handleSetTarget(c)}>
+                                                onClick={() => handleSetTarget(c)}>
 
-                                            <div className="relative flex justify-center text-[10px]">
-                                                <img
-                                                    src={`${process.env.PUBLIC_URL}/images/사도/볼/${c}.png`}
-                                                    className="h-[60px] w-auto object-contain m-2"
-                                                    alt={c}
-                                                    title={c} />
-                                                <img
-                                                    src={`${process.env.PUBLIC_URL}/images/사도/${charInfo[c].grade}.png`}
-                                                    className="h-[10px] absolute bottom-[-6px] w-auto object-contain m-2"
-                                                    alt={c}
-                                                    title={c} />
-                                                {howMuchLike(c) && (
+                                                <div className="relative flex justify-center text-[10px]">
                                                     <img
-                                                        src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(c)}.webp`}
-                                                        className={`w-4 absolute top-[-2px] right-[-4px] rotate-12`}
-                                                        alt={c}
-                                                        title={c} />
-                                                )}
-                                            </div>
-                                            <span className="text-[12px] flex justify-center items-center text-wrap font-bold">
-                                                <span className=" truncate">
-                                                    {c}
+                                                        src={`${process.env.PUBLIC_URL}/images/character/profile/${c}.webp`}
+                                                        className="h-[60px] w-auto object-contain m-2"
+                                                        alt={charName}
+                                                        title={charName} />
+                                                    <img
+                                                        src={`${process.env.PUBLIC_URL}/images/character/${charInfo[c].grade}.png`}
+                                                        className="h-[10px] absolute bottom-[-6px] w-auto object-contain m-2"
+                                                        alt={charName}
+                                                        title={charName} />
+                                                    {howMuchLike(c) && (
+                                                        <img
+                                                            src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(c)}.webp`}
+                                                            className={`w-4 absolute top-[-2px] right-[-4px] rotate-12`}
+                                                            alt={charName}
+                                                            title={charName} />
+                                                    )}
+                                                </div>
+                                                <span className="text-[12px] flex justify-center items-center text-wrap font-bold">
+                                                    <span className=" truncate">
+                                                        {charName}
+                                                    </span>
                                                 </span>
-                                            </span>
-                                        </div>
+                                            </div>
 
-                                    ))}
+                                        )
+                                    })}
                                 </div>
                             </div>
                         ))}

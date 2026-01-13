@@ -3,7 +3,6 @@ import ReactGA from 'react-ga';
 import FoodComponent from "../components/trickcal/food/FoodComponent";
 import CharacterSearch from "../layouts/CharacterSearch";
 import Footer from "../layouts/Footer";
-import Header from "../layouts/Header";
 
 const IndexPage = () => {
 
@@ -24,7 +23,7 @@ const IndexPage = () => {
     return (
         <div className="flex justify-center">
             <div className="w-[1200px] relative gap-y-12 flex flex-col">
-                <div className="mb-[100px] flex justify-center">
+                <div className="mb-[120px] flex justify-center">
                     <CharacterSearch
                         setTarget={setTarget}
                     />
