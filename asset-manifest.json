@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/foods/static/css/main.a69ab242.css",
-    "main.js": "/foods/static/js/main.092433ed.js",
+    "main.js": "/foods/static/js/main.d2f1dba7.js",
     "static/js/206.02781fb5.chunk.js": "/foods/static/js/206.02781fb5.chunk.js",
     "static/media/NotoSansKR-Regular.ttf": "/foods/static/media/NotoSansKR-Regular.9bc92a36ed81392f698b.ttf",
     "static/media/logo.svg": "/foods/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
@@ -9,6 +9,6 @@
   },
   "entrypoints": [
     "static/css/main.a69ab242.css",
-    "static/js/main.092433ed.js"
+    "static/js/main.d2f1dba7.js"
   ]
 }
