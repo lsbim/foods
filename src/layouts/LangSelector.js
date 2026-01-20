@@ -29,6 +29,7 @@ const LangSelector = () => {
     const langList = [
         { label: '한국어', lang: 'ko' },
         { label: 'English', lang: 'en' },
+        { label: '日本語', lang: 'jp' },
         { label: '简体中文', lang: 'zhCN' },
     ]
 

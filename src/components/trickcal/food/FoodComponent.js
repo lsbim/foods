@@ -1,16 +1,16 @@
-import { useEffect } from "react";
-import { charInfo, charType, typeList } from "../../../data/char/charInfo";
+import { useEffect, useMemo } from "react";
+import { foodPreference } from "../../../data/char/charInfo";
 import { translationTr } from "../../../data/i18n/i18n";
 import { useLanguage } from "../../../util/langUtils";
 
 const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike, hate, setHate, soso, setSoso }) => {
 
-    const { foodGradeList, foodGrade, foodBonus, language, server } = useLanguage();
+    const { foodGradeList, foodGrade, foodBonus, language, server, personality, charInfo } = useLanguage();
 
     // console.log(language)
 
     useEffect(() => {
-        const isChar = charInfo[target];
+        const isChar = foodPreference[target];
         if (isChar) {
             setVerylike(isChar.verylike)
             setLike(isChar.like)
@@ -22,7 +22,8 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             const hateChars = [];
             const sosoChars = [];
 
-            Object.entries(charInfo).forEach(([char, info]) => {
+            Object.entries(foodPreference).forEach(([char, info]) => {
+
                 if (info.verylike?.includes(target)) {
                     verylikeChars.push(char);
                 }
@@ -41,7 +42,33 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             setHate(hateChars);
             setSoso(sosoChars);
         }
-    }, [target])
+    }, [target, charInfo])
+
+    useEffect(() => {
+        if (target) {
+            setTarget('');
+
+            setVerylike([]);
+            setLike([]);
+            setHate([]);
+            setSoso([]);
+
+        }
+    }, [server]);
+
+    const persGroup = useMemo(() => {
+        const group = {};
+
+        personality.forEach(p => group[p] = []);
+
+        Object.entries(charInfo).forEach(([char, info]) => {
+            const pers = info.type;
+
+            if (group[pers]) group[pers].push(char);
+        })
+
+        return group;
+    }, [server])
 
     const handleSetTarget = (t) => {
         if (t === target) {
@@ -136,7 +163,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                             </div>
                                         )}
 
-                                        {l !== 0 && target && charInfo[target] && (
+                                        {l !== 0 && target && foodPreference[target] && (
                                             <>
                                                 {/* verylike 음식이 이 등급에 있는지 확인하고 표시 */}
                                                 {foodGrade[l].some(item => verylike?.includes(item)) && (
@@ -221,7 +248,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                     {/* 사도칸 */}
                     <div className="max-w-[47%]">
                         {/* 성격 블럭 */}
-                        {typeList.map((p, i) => (
+                        {personality.map((p, i) => (
                             <div key={i} className={`flex flex-wrap border-x-2 border-black`}>
                                 <div className={`h-8 w-full font-bold ${charListHeaderColor(p)} flex py-1 items-center pl-1`}>
                                     <img
@@ -235,7 +262,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                 </div>
                                 <div className="flex flex-wrap justify-start w-full">
                                     {/* 캐릭터 블럭 */}
-                                    {charType[p].map((c, i) => {
+                                    {persGroup[p].map((c, i) => {
 
                                         const charName = translationTr('characters', c, language);
 
@@ -266,7 +293,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                                             title={charName} />
                                                     )}
                                                 </div>
-                                                <span className="text-[12px] flex justify-center items-center text-wrap font-bold">
+                                                <span className="xs:text-[12px] text-[11px] flex justify-center items-center text-wrap font-bold">
                                                     <span className=" truncate">
                                                         {charName}
                                                     </span>

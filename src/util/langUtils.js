@@ -1,8 +1,10 @@
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
-import { foodBonusKo, foodGrade, foodGradeKo, foodGradeListKo } from "../data/food/foodInfo-ko";
-import { foodBonus, foodBonusGlobal, foodGradeGlobal, foodGradeListGlobal } from "../data/food/foodInfo-global";
+import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { charGlobalData, charKrData, typeList } from "../data/char/charInfo";
+import { foodBonusGlobal, foodGradeGlobal, foodGradeListGlobal } from "../data/food/foodInfo-global";
+import { foodBonusKo, foodGradeKo, foodGradeListKo } from "../data/food/foodInfo-ko";
+import { translations } from "../data/i18n/i18n";
 
-const SUPPORTED_LANGUAGES = ['ko', 'en', 'ja', 'zhCN', 'zhTW'];
+const SUPPORTED_LANGUAGES = ['ko', 'en', 'jp', 'zhCN', 'zhTW'];
 const SUPPORTED_SERVERS = ['kr', 'global'];
 
 export const getServerInfo = () => {
@@ -88,12 +90,45 @@ export const LanguageProvider = ({ children }) => {
         updateServerInfo(lang);
     }, []);
 
+
     const foodGradeList = server === 'kr' ? foodGradeListKo : foodGradeListGlobal;
     const foodGrade = server === 'kr' ? foodGradeKo : foodGradeGlobal;
     const foodBonus = server === 'kr' ? foodBonusKo : foodBonusGlobal;
 
+    const personality = server === 'kr' ? typeList : typeList.filter(type => type !== '공명');
+
+    const charInfo = useMemo(() => {
+        if (server === 'kr') return charKrData;
+
+        const globalData = {};
+
+        Object.keys(charKrData).forEach(name => {
+
+            const hasJpName = translations.characters[name]?.jp && translations.characters[name].jp !== "";
+
+            if (hasJpName) {
+                globalData[name] = {
+                    ...charKrData[name],
+                    ...(charGlobalData[name] || {})
+                }
+            }
+        });
+
+        return globalData;
+    }, [server])
+
     return (
-        <LanguageContext.Provider value={{ foodGradeList, foodGrade, foodBonus, language, setLanguage, server, setServer }}>
+        <LanguageContext.Provider value={{
+            foodGradeList,
+            foodGrade,
+            foodBonus,
+            language,
+            setLanguage,
+            server,
+            setServer,
+            personality,
+            charInfo
+        }}>
             {children}
         </LanguageContext.Provider>
     );
