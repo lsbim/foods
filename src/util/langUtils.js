@@ -1,22 +1,16 @@
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
-import { charGlobalData, charKrData, typeList } from "../data/char/charInfo";
+import { createContext, useCallback, useContext, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { foodBonusGlobal, foodGradeGlobal, foodGradeListGlobal } from "../data/food/foodInfo-global";
 import { foodBonusKo, foodGradeKo, foodGradeListKo } from "../data/food/foodInfo-ko";
-import { translations } from "../data/i18n/i18n";
+import { typeList } from "../data/i18n/charInfo";
 
-const SUPPORTED_LANGUAGES = ['ko', 'en', 'jp', 'zhCN', 'zhTW'];
 const SUPPORTED_SERVERS = ['kr', 'global'];
 
 export const getServerInfo = () => {
 
     const raw = localStorage.getItem('server');
 
-    // console.log(`raw: ${raw}`)
-
-    const server = raw ?? (detectUserLanguage() === 'ko' ? 'kr' : 'global');
-    // console.log(`server: ${server}`)
-
-    return server;
+    return raw ?? detectDefaultServer();
 }
 
 export const updateServerInfo = (server) => {
@@ -27,67 +21,26 @@ export const updateServerInfo = (server) => {
     return false;
 };
 
-export const getLangInfo = () => {
-
-    const raw = localStorage.getItem('lang');
-    // console.log(`raw: ${raw}`)
-
-    const lang = raw ?? detectUserLanguage();
-    // console.log(`lang: ${lang}`)
-
-    return lang;
-}
-
-export const updateLangInfo = (lang) => {
-    if (SUPPORTED_LANGUAGES.includes(lang)) {
-        localStorage.setItem('lang', lang);
-        return true;
-    }
-    return false;
-};
-
-const detectUserLanguage = () => {
+const detectDefaultServer = () => {
     // 브라우저 언어 설정 가져오기
     const browserLang = navigator.language || navigator.userLanguage;
+    const langCode = browserLang.toLowerCase().split('-')[0];
 
-    const [langCode, regionCode] = browserLang.toLowerCase().split('-');
-
-    // 간체 번체 파악
-    if (langCode === 'zh') {
-        if (regionCode === 'cn' || regionCode === 'sg') {
-            return 'zhCN';
-        }
-        // 현재 번체 미구현
-        // if (regionCode === 'tw' || regionCode === 'hk' || regionCode === 'mo') {
-        //     return 'zhTW';
-        // }
-
-        return 'zhCN';
-    }
-
-    // 다른 지역은 지역코드 제외하고 언어코드만 확인
-    if (SUPPORTED_LANGUAGES.includes(langCode)) {
-        return langCode;
-    }
-
-    // 지원하지 않는 언어는 영어를 기본
-    return 'en';
+    return langCode === 'ko' ? 'kr' : 'global';
 };
 
 const LanguageContext = createContext(undefined);
 
 export const LanguageProvider = ({ children }) => {
-    const [language, setLanguageState] = useState(getLangInfo());
     const [server, setServerState] = useState(getServerInfo());
+    const { i18n } = useTranslation();
 
     const setLanguage = useCallback((lang) => {
-        setLanguageState(lang); // 리렌더링
-        updateLangInfo(lang);
+        i18n.changeLanguage(lang);
     }, []);
 
     const setServer = useCallback((lang) => {
         setServerState(lang); // 리렌더링
-        updateServerInfo(lang);
     }, []);
 
 
@@ -97,37 +50,15 @@ export const LanguageProvider = ({ children }) => {
 
     const personality = server === 'kr' ? typeList : typeList.filter(type => type !== '공명');
 
-    const charInfo = useMemo(() => {
-        if (server === 'kr') return charKrData;
-
-        const globalData = {};
-
-        Object.keys(charKrData).forEach(name => {
-
-            const hasJpName = translations.characters[name]?.jp && translations.characters[name].jp !== "";
-
-            if (hasJpName) {
-                globalData[name] = {
-                    ...charKrData[name],
-                    ...(charGlobalData[name] || {})
-                }
-            }
-        });
-
-        return globalData;
-    }, [server])
-
     return (
         <LanguageContext.Provider value={{
             foodGradeList,
             foodGrade,
             foodBonus,
-            language,
             setLanguage,
             server,
             setServer,
             personality,
-            charInfo
         }}>
             {children}
         </LanguageContext.Provider>

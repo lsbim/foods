@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import IndexPage from './pages/IndexPage';
-import { LanguageProvider } from './util/langUtils';
+import './data/i18n/i18n.js';
 
 function App() {
   return (

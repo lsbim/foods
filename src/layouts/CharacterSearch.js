@@ -1,6 +1,7 @@
 import { getChoseong } from "es-hangul";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { translations, translationTr } from "../data/i18n/i18n";
+import { useTranslation } from "react-i18next";
+import { charInfo } from "../data/i18n/charInfo";
 import { useLanguage } from "../util/langUtils";
 import { recentSearch } from "../util/recentSearch";
 import LangSelector from "./LangSelector";
@@ -12,20 +13,21 @@ const CharacterSearch = ({ setTarget }) => {
     const [open, setOpen] = useState(false);
     const containerRef = useRef(null);
     const { getHistory, addHistory } = recentSearch();
+    const { t } = useTranslation();
 
     const searchData = useMemo(() => {
-        return Object.entries(translations.characters).map(([key, trans]) => {
+        return Object.entries(charInfo).map(([key, info]) => {
             const allNames = [
-                trans.ko,
-                trans.en,
-                trans.zhCN,
+                info.names.ko,
+                info.names.en,
+                info.names.zhCN,
                 key // 기준 키값
             ].map(n => n?.toLowerCase().replace(/\s+/g, "") || "");
 
             return {
                 key,
                 names: allNames,
-                choseong: getChoseong(trans.ko.replace(/\s+/g, ""))
+                choseong: getChoseong(info.names.ko.replace(/\s+/g, ""))
             };
         });
     }, []);
@@ -89,7 +91,7 @@ const CharacterSearch = ({ setTarget }) => {
                             <div className={`flex w-[65%] pr-4 gap-y-1 max-h-[435.6px] bg-red ${searchList.length > 0 && 'flex-wrap content-start overflow-y-scroll'}`}>
                                 {searchList.length > 0 ? searchList.map(name => {
 
-                                    const charName = translationTr('characters', name, language)
+                                    const charName = t(`char.${name}`)
 
                                     return (
                                         <div
@@ -128,7 +130,7 @@ const CharacterSearch = ({ setTarget }) => {
                             <div className="w-[35%] gap-y-1 flex-col flex">
                                 {getHistory().length > 0 && getHistory().map(recent => {
 
-                                    const charName = translationTr('characters', recent, language)
+                                    const charName = t(`char.${recent}`)
 
                                     return (
                                         <div

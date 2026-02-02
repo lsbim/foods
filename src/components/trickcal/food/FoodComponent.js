@@ -1,16 +1,17 @@
 import { useEffect, useMemo } from "react";
-import { foodPreference } from "../../../data/char/charInfo";
-import { translationTr } from "../../../data/i18n/i18n";
+import { useTranslation } from "react-i18next";
+import { charInfo } from "../../../data/i18n/charInfo";
 import { useLanguage } from "../../../util/langUtils";
 
 const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike, hate, setHate, soso, setSoso }) => {
 
-    const { foodGradeList, foodGrade, foodBonus, language, server, personality, charInfo } = useLanguage();
+    const { foodGradeList, foodGrade, foodBonus, language, server, personality } = useLanguage();
+    const { t } = useTranslation();
 
     // console.log(language)
 
     useEffect(() => {
-        const isChar = foodPreference[target];
+        const isChar = charInfo[target]?.food;
         if (isChar) {
             setVerylike(isChar.verylike)
             setLike(isChar.like)
@@ -22,18 +23,21 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             const hateChars = [];
             const sosoChars = [];
 
-            Object.entries(foodPreference).forEach(([char, info]) => {
+            Object.entries(charInfo).forEach(([char, info]) => {
 
-                if (info.verylike?.includes(target)) {
+                const charData = charInfo[char];
+                if (!charData || (server === 'global' && !charData.ja)) return;
+
+                if (info.food.verylike?.includes(target)) {
                     verylikeChars.push(char);
                 }
-                if (info.like?.includes(target)) {
+                if (info.food.like?.includes(target)) {
                     likeChars.push(char);
                 }
-                if (info.hate?.includes(target)) {
+                if (info.food.hate?.includes(target)) {
                     hateChars.push(char);
                 }
-                if (info.soso?.includes(target)) {
+                if (info.food.soso?.includes(target)) {
                     sosoChars.push(char);
                 }
             });
@@ -42,7 +46,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             setHate(hateChars);
             setSoso(sosoChars);
         }
-    }, [target, charInfo])
+    }, [target, charInfo, server])
 
     useEffect(() => {
         if (target) {
@@ -60,15 +64,20 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
         const group = {};
 
         personality.forEach(p => group[p] = []);
+        const isGlobal = server === 'global';
 
         Object.entries(charInfo).forEach(([char, info]) => {
-            const pers = info.type;
+            // console.log(char, info)
+            if (isGlobal && !info?.names?.ja) return;
 
+            const pers = info?.stats?.global?.type || info?.stats?.default?.type;
             if (group[pers]) group[pers].push(char);
         })
 
         return group;
-    }, [server])
+    }, [server]);
+
+    // console.log(persGroup)
 
     const handleSetTarget = (t) => {
         if (t === target) {
@@ -163,7 +172,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                             </div>
                                         )}
 
-                                        {l !== 0 && target && foodPreference[target] && (
+                                        {l !== 0 && target && charInfo[target]?.food && (
                                             <>
                                                 {/* verylike 음식이 이 등급에 있는지 확인하고 표시 */}
                                                 {foodGrade[l].some(item => verylike?.includes(item)) && (
@@ -254,17 +263,20 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                     <img
                                         src={`${process.env.PUBLIC_URL}/images/icon/${p}.png`}
                                         className={`w-5 object-contain flex items-center`}
-                                        alt={translationTr('personality', p, language)}
-                                        title={translationTr('personality', p, language)} />
+                                        alt={t(`personality.${p}`)}
+                                        title={t(`personality.${p}`)} />
                                     <span className="pl-1 py-1">
-                                        {translationTr('personality', p, language)}
+                                        {t(`personality.${p}`)}
                                     </span>
                                 </div>
                                 <div className="flex flex-wrap justify-start w-full">
                                     {/* 캐릭터 블럭 */}
                                     {persGroup[p].map((c, i) => {
 
-                                        const charName = translationTr('characters', c, language);
+                                        const charName = t(`char.${c}`)
+                                        const grade = server === 'global' ? charInfo[c].stats.global?.grade || charInfo[c].stats.default?.grade : charInfo[c].stats.default?.grade;
+
+                                        // console.log(persGroup)
 
                                         return (
                                             <div
@@ -281,7 +293,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                                         alt={charName}
                                                         title={charName} />
                                                     <img
-                                                        src={`${process.env.PUBLIC_URL}/images/character/${charInfo[c].grade}.png`}
+                                                        src={`${process.env.PUBLIC_URL}/images/character/${grade}.png`}
                                                         className="h-[10px] absolute bottom-[-6px] w-auto object-contain m-2"
                                                         alt={charName}
                                                         title={charName} />

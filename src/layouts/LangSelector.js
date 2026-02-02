@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useLanguage } from "../util/langUtils";
 
 const LangSelector = () => {
 
     const [isOn, setIsOn] = useState(false);
     const dropdownRef = useRef(null);
-    const { setLanguage, language } = useLanguage();
+    const { setLanguage } = useLanguage();
+    const { i18n } = useTranslation();
+    const language = i18n.language;
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -29,7 +32,7 @@ const LangSelector = () => {
     const langList = [
         { label: '한국어', lang: 'ko' },
         { label: 'English', lang: 'en' },
-        { label: '日本語', lang: 'jp' },
+        { label: '日本語', lang: 'ja' },
         { label: '简体中文', lang: 'zhCN' },
     ]
 
