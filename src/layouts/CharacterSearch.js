@@ -20,7 +20,7 @@ const CharacterSearch = ({ setTarget }) => {
             const allNames = [
                 info.names.ko,
                 info.names.en,
-                info.names.zhCN,
+                info.names['zh-CN'],
                 key // 기준 키값
             ].map(n => n?.toLowerCase().replace(/\s+/g, "") || "");
 

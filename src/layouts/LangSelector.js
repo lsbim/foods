@@ -33,7 +33,7 @@ const LangSelector = () => {
         { label: '한국어', lang: 'ko' },
         { label: 'English', lang: 'en' },
         { label: '日本語', lang: 'ja' },
-        { label: '简体中文', lang: 'zhCN' },
+        { label: '简体中文', lang: 'zh-CN' },
     ]
 
     const handleLangChange = (lang) => {
