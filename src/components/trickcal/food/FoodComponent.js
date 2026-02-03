@@ -10,43 +10,53 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
 
     // console.log(language)
 
+    const foodMap = useMemo(() => {
+        const map = {};
+
+        Object.entries(charInfo).forEach(([charName, info]) => {
+            if (server === 'global' && !info?.names?.ja) return;
+
+            const { food } = info;
+            if (!food) return;
+
+            ['verylike', 'like', 'hate', 'soso'].forEach(type => {
+                if (food[type]) {
+                    food[type].forEach(foodName => {
+                        if (!map[foodName]) {
+                            map[foodName] = { verylike: [], like: [], hate: [], soso: [] };
+                        }
+                        map[foodName][type].push(charName);
+                    });
+                }
+            });
+        });
+
+        return map;
+    }, [server]);
+
     useEffect(() => {
         const isChar = charInfo[target]?.food;
         if (isChar) {
-            setVerylike(isChar.verylike)
-            setLike(isChar.like)
-            setHate(isChar.hate)
-            setSoso(isChar.soso)
+            setVerylike(isChar?.verylike)
+            setLike(isChar?.like)
+            setHate(isChar?.hate)
+            setSoso(isChar?.soso)
         } else {
-            const verylikeChars = [];
-            const likeChars = [];
-            const hateChars = [];
-            const sosoChars = [];
+            const targetFood = foodMap[target];
 
-            Object.entries(charInfo).forEach(([char, info]) => {
-
-                const charData = charInfo[char];
-                if (!charData || (server === 'global' && !charData.ja)) return;
-
-                if (info.food.verylike?.includes(target)) {
-                    verylikeChars.push(char);
-                }
-                if (info.food.like?.includes(target)) {
-                    likeChars.push(char);
-                }
-                if (info.food.hate?.includes(target)) {
-                    hateChars.push(char);
-                }
-                if (info.food.soso?.includes(target)) {
-                    sosoChars.push(char);
-                }
-            });
-            setVerylike(verylikeChars);
-            setLike(likeChars);
-            setHate(hateChars);
-            setSoso(sosoChars);
+            if (targetFood) {
+                setVerylike(targetFood?.verylike);
+                setLike(targetFood?.like);
+                setHate(targetFood?.hate);
+                setSoso(targetFood?.soso);
+            } else {
+                setVerylike([]);
+                setLike([]);
+                setHate([]);
+                setSoso([]);
+            }
         }
-    }, [target, charInfo, server])
+    }, [target, server, foodMap])
 
     useEffect(() => {
         if (target) {

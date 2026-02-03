@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { foodBonusGlobal, foodGradeGlobal, foodGradeListGlobal } from "../data/food/foodInfo-global";
 import { foodBonusKo, foodGradeKo, foodGradeListKo } from "../data/food/foodInfo-ko";
@@ -43,13 +43,19 @@ export const LanguageProvider = ({ children }) => {
         setServerState(lang); // 리렌더링
     }, []);
 
+    const foodGradeList = useMemo(() => {
+        return server === 'kr' ? foodGradeListKo : foodGradeListGlobal
+    }, [server]);
+    const foodGrade = useMemo(() => {
+        return server === 'kr' ? foodGradeKo : foodGradeGlobal
+    }, [server]);
+    const foodBonus = useMemo(() => {
+        return server === 'kr' ? foodBonusKo : foodBonusGlobal
+    }, [server]);
 
-    const foodGradeList = server === 'kr' ? foodGradeListKo : foodGradeListGlobal;
-    const foodGrade = server === 'kr' ? foodGradeKo : foodGradeGlobal;
-    const foodBonus = server === 'kr' ? foodBonusKo : foodBonusGlobal;
-
-    const personality = server === 'kr' ? typeList : typeList.filter(type => type !== '공명');
-
+    const personality = useMemo(() => {
+        return server === 'kr' ? typeList : typeList.filter(type => type !== '공명')
+    }, [server]);
     return (
         <LanguageContext.Provider value={{
             foodGradeList,
