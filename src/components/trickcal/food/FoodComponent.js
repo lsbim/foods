@@ -237,15 +237,18 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                     {foodGrade[l].map((item, i) => (
                                         <div
                                             key={i}
-                                            className={`p-[2px] hover:bg-orange-200 cursor-pointer group relative ${targetColor(item)} `}
+                                            className={`p-[2px] hover:bg-orange-200 cursor-pointer group relative ${targetColor(item)} 
+                                            lg:w-1/6 md:w-[20%] xxs:w-[33.3%] w-[50%]`}
                                             onClick={() => handleSetTarget(item)}>
                                             {/* 선택되지 않은 음식은 투명도 40% */}
-                                            <img
-                                                src={`${process.env.PUBLIC_URL}/images/food/${item}.webp`}
-                                                className={`md:h-[60px] h-[40px] w-auto object-contain m-2 aspect-square
+                                            <div className="aspect-square p-2">
+                                                <img
+                                                    src={`${process.env.PUBLIC_URL}/images/food/${item}.webp`}
+                                                    className={`w-full h-full object-contain
                                                     ${isTargetAndLike(item) || 'opacity-60'}`}
-                                                alt={item}
-                                                title={item} />
+                                                    alt={item}
+                                                    title={item} />
+                                            </div>
                                             {howMuchLike(item) && (
                                                 <img
                                                     src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(item)}.webp`}
