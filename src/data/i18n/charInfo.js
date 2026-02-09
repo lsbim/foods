@@ -83,9 +83,12 @@ export const charInfo = {
         }
     },
     "로네": {
-        names: { ko: "로네", en: "Rohne", 'zh-CN': "洛涅", 'zh-TW': "", ja: "" },
+        names: { ko: "로네", en: "Rohne", 'zh-CN': "洛涅", 'zh-TW': "", ja: "ローネ" },
         food: { verylike: ["백금탕후루"], like: ["금탕후루", "초콜릿 아이스크림", "딥다크 초콜릿 아이스크림"], hate: ["우주식량", "공기 커틀릿", "ANSA 우주식량", "수소 커틀릿"], soso: ["송편"] },
-        stats: { default: { grade: 2, type: "순수" } }
+        stats: {
+            default: { grade: 2, type: "순수" },
+            global: { grade: 3, type: "순수" },
+        }
     },
     "마고": {
         names: { ko: "마고", en: "Mago", 'zh-CN': "玛戈", 'zh-TW': "", ja: "マーゴ" },

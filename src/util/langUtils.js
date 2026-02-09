@@ -41,6 +41,7 @@ export const LanguageProvider = ({ children }) => {
 
     const setServer = useCallback((lang) => {
         setServerState(lang); // 리렌더링
+        updateServerInfo(lang)
     }, []);
 
     const foodGradeList = useMemo(() => {
