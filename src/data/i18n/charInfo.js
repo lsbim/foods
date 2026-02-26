@@ -15,7 +15,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "순수" } }
     },
     "나이아": {
-        names: { ko: "나이아", en: "Naia", 'zh-CN': "奈亚", 'zh-TW': "", ja: "" },
+        names: { ko: "나이아", en: "Naia", 'zh-CN': "奈亚", 'zh-TW': "", ja: "ナイア" },
         food: { verylike: ["해초 포케"], like: ["금탕후루", "해초 샐러드", "백금탕후루"], hate: ["우주식량", "비밀의 포도주스", "1급 비밀의 포도주스", "ANSA 우주식량"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
@@ -229,7 +229,7 @@ export const charInfo = {
     },
     "잉클": {
         names: { ko: "잉클", en: "Inkle", 'zh-CN': "尹可", 'zh-TW': "", ja: "" },
-        food: { verylike: ["UFC 야채 튀김"], like: ["UFC 당근 튀김", "레몬차", "유기농 레몬차"], hate: ["따뜻한 아이스 아메리카노", "뜨거운 냉동 아메리카노"] },
+        food: { verylike: ["UFC 야채 튀김"], like: ["UFC 당근 튀김", "레몬차", "유기농 레몬차"], hate: ["따뜻한 아이스 아메리카노", "뜨거운 냉동 아메리카노", "보석 타르트", "보물 타르트"] },
         stats: { default: { grade: 3, type: "냉정" } }
     },
     "에스피": {
@@ -604,6 +604,11 @@ export const charInfo = {
         food: { verylike: ["호박 스튜"], like: ["한입초 쌈", "두입초 쌈", "호박 스프"], hate: ["딸기 케이크", "크림 브륄레", "와앙 딸기 케이크", "소프트 크림 브륄레"] },
         stats: { default: { grade: 3, type: "우울" } }
     },
+    "아멜리아(R41)": {
+        names: { ko: "아멜리아(R41)", en: "Amelia(R41)", 'zh-CN': "艾蜜莉雅(R41)", 'zh-TW': "", ja: "" },
+        food: { verylike: ["찹쌀밥 한 공기"], like: ["쌀밥 한 공기", "초콜릿 아이스크림", "딥다크 초콜릿 아이스크림"], hate: ["우주식량", "ANSA 우주식량", "코코넛 솔잎죽", "코코넛 만능 녹즙"] },
+        stats: { default: { grade: 3, type: "우울" } }
+    },
     "레비": {
         names: { ko: "레비", en: "Levi", 'zh-CN': "莱薇", 'zh-TW': "", ja: "レヴィ" },
         food: { verylike: ["엘플릭스 캬라멜 팝콘"], like: ["캬라멜 팝콘", "UFC 당근 튀김", "UFC 야채 튀김"], hate: ["크림 브륄레", "코코넛 솔잎죽", "코코넛 만능 녹즙", "소프트 크림 브륄레"] },
@@ -612,7 +617,10 @@ export const charInfo = {
     "실피르": {
         names: { ko: "실피르", en: "Silphir", 'zh-CN': "希菲尔", 'zh-TW': "", ja: "シルフィール" },
         food: { verylike: ["백금탕후루"], like: ["금탕후루", "유령 푸딩", "악령 푸딩"], hate: ["코코넛 솔잎죽", "해초 샐러드", "코코넛 만능 녹즙", "해초 포케"] },
-        stats: { default: { grade: 2, type: "우울" } }
+        stats: {
+            default: { grade: 2, type: "우울" },
+            global: { grade: 3, type: "순수" },
+        }
     },
     "페스타": {
         names: { ko: "페스타", en: "Festa", 'zh-CN': "菲斯塔", 'zh-TW': "", ja: "フェスタ" },

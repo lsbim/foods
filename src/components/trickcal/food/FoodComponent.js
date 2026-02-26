@@ -84,6 +84,18 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             if (group[pers]) group[pers].push(char);
         })
 
+        const getGrade = (char) => {
+            const stats = charInfo[char]?.stats;
+
+            return isGlobal
+                ? (stats.global?.grade ?? stats.default?.grade ?? 0)
+                : (stats.default?.grade ?? 0);
+        };
+
+        Object.values(group).forEach(charArr => {
+            charArr.sort((a, b) => getGrade(b) - getGrade(a));
+        });
+
         return group;
     }, [server]);
 
