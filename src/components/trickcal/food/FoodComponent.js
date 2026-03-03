@@ -80,7 +80,9 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             // console.log(char, info)
             if (isGlobal && !info?.names?.ja) return;
 
-            const pers = info?.stats?.global?.type || info?.stats?.default?.type;
+            const pers = isGlobal
+                ? (info?.stats?.global?.type || info?.stats?.default?.type)
+                : info?.stats?.default?.type;
             if (group[pers]) group[pers].push(char);
         })
 
