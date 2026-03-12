@@ -74,6 +74,11 @@ export const charInfo = {
         food: { verylike: ["해초 포케"], like: ["해초 샐러드", "레몬차", "유기농 레몬차"], hate: ["우주식량", "ANSA 우주식량", "석류석 열매", "석류석 화채"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
+    "델리아": {
+        names: { ko: "델리아", en: "Delia", 'zh-CN': "德莉雅", 'zh-TW': "", ja: "" },
+        food: { verylike: ["트리플 민트 초코 아이스크림"], like: ["민트 초코 아이스크림", "허니갈릭 살몬", "로얄 허니갈릭 살몬"], hate: [] },
+        stats: { default: { grade: 3, type: "순수" } }
+    },
     "가비아": {
         names: { ko: "가비아", en: "Gabia", 'zh-CN': "加维亚", 'zh-TW': "", ja: "ガヴィア" },
         food: { verylike: ["계피맛 건강 알사탕"], like: ["계피맛 알사탕", "레몬차", "유기농 레몬차"], hate: ["용족 사탕", "크림 브륄레", "용족 세공 사탕", "소프트 크림 브륄레"] },
