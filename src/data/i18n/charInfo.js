@@ -429,7 +429,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "활발" } }
     },
     "슈팡": {
-        names: { ko: "슈팡", en: "Shoupan", 'zh-CN': "舒胖", 'zh-TW': "", ja: "" },
+        names: { ko: "슈팡", en: "Shoupan", 'zh-CN': "舒胖", 'zh-TW': "", ja: "シュパン" },
         food: { verylike: ["ANSA 우주식량"], like: ["초콜릿 아이스크림", "우주식량", "딥다크 초콜릿 아이스크림"], hate: ["해초 샐러드", "호박 스프", "호박 스튜", "해초 포케"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
