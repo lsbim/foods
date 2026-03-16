@@ -76,7 +76,7 @@ export const charInfo = {
     },
     "델리아": {
         names: { ko: "델리아", en: "Delia", 'zh-CN': "德莉雅", 'zh-TW': "", ja: "" },
-        food: { verylike: ["트리플 민트 초코 아이스크림"], like: ["민트 초코 아이스크림", "허니갈릭 살몬", "로얄 허니갈릭 살몬"], hate: [] },
+        food: { verylike: ["트리플 민트 초코 아이스크림"], like: ["민트 초코 아이스크림", "허니갈릭 살몬", "로얄 허니갈릭 살몬"], hate: ["레몬차", "유기농 레몬차"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
     "가비아": {
