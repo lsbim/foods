@@ -327,7 +327,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                                     {howMuchLike(c) && (
                                                         <img
                                                             src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(c)}.webp`}
-                                                            className={`w-4 absolute top-[-2px] right-[-4px] rotate-12`}
+                                                            className={`w-4 absolute top-[-8px] right-[-10px] rotate-12`}
                                                             alt={charName}
                                                             title={charName} />
                                                     )}

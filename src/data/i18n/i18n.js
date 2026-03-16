@@ -7,7 +7,7 @@ const persResources = {
     ko: { personality: { "순수": "순수", "냉정": "냉정", "광기": "광기", "활발": "활발", "우울": "우울", "공명": "공명" } },
     en: { personality: { "순수": "Innocence", "냉정": "Composed", "광기": "Madness", "활발": "Vivacious", "우울": "Depressed", "공명": "Resonance" } },
     'zh-CN': { personality: { "순수": "纯粹", "냉정": "冷静", "광기": "狂热", "활발": "活泼", "우울": "忧郁", "공명": "共鸣" } },
-    ja: { personality: { "순수": "純粋", "냉정": "冷静", "狂기": "狂気", "활발": "活発", "우울": "憂鬱", "공명": "共鳴" } }
+    ja: { personality: { "순수": "純粋", "냉정": "冷静", "광기": "狂気", "활발": "活発", "우울": "憂鬱", "공명": "共鳴" } }
 };
 
 const generateResources = () => {
