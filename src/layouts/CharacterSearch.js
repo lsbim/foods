@@ -6,43 +6,16 @@ import { useLanguage } from "../util/langUtils";
 import { recentSearch } from "../util/recentSearch";
 import LangSelector from "./LangSelector";
 import ServerSelector from "./ServerSelector";
+import { useCharSearch } from "../hooks/useCharSearch";
 
 const CharacterSearch = ({ setTarget }) => {
-    const { language } = useLanguage();
     const [search, setSearch] = useState('');
     const [open, setOpen] = useState(false);
     const containerRef = useRef(null);
     const { getHistory, addHistory } = recentSearch();
-    const { t } = useTranslation();
-
-    const searchData = useMemo(() => {
-        return Object.entries(charInfo).map(([key, info]) => {
-            const allNames = [
-                info.names.ko,
-                info.names.en,
-                info.names['zh-CN'],
-                key // 기준 키값
-            ].map(n => n?.toLowerCase().replace(/\s+/g, "") || "");
-
-            return {
-                key,
-                names: allNames,
-                choseong: getChoseong(info.names.ko.replace(/\s+/g, ""))
-            };
-        });
-    }, []);
-
-    const searchList = useMemo(() => {
-        const term = search.trim().toLowerCase().replace(/\s+/g, "");
-        if (!term) return [];
-
-        return searchData
-            .filter(item =>
-                item.names.some(name => name.includes(term)) || // 어떤 언어든 포함되면 통과
-                item.choseong.includes(term) // 초성 검색
-            )
-            .map(item => item.key);
-    }, [search, searchData]);
+    const { t, i18n } = useTranslation();
+    const language = i18n.language;
+    const searchList = useCharSearch(search, { showAllWhenEmpty: false });
 
     useEffect(() => {
         function onClickOutside(e) {
@@ -56,7 +29,7 @@ const CharacterSearch = ({ setTarget }) => {
         return () => document.removeEventListener('mousedown', onClickOutside);
     }, []);
 
-    // console.log(searchData)
+    // console.log(searchList.length, language)
 
     return (
         <div className="fixed flex flex-col lg:flex-row items-center justify-center gap-4 py-2 sm:py-4 bg-white w-full z-40 border-b-2 border-gray-200">
