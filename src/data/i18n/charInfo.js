@@ -76,7 +76,7 @@ export const charInfo = {
     },
     "델리아": {
         names: { ko: "델리아", en: "Delia", 'zh-CN': "德莉雅", 'zh-TW': "", ja: "" },
-        food: { verylike: ["트리플 민트 초코 아이스크림"], like: ["민트 초코 아이스크림", "허니갈릭 살몬", "로얄 허니갈릭 살몬"], hate: ["레몬차", "유기농 레몬차"] },
+        food: { verylike: ["트리플 민트 초코 아이스크림"], like: ["민트 초코 아이스크림", "허니갈릭 살몬", "로얄 허니갈릭 살몬"], hate: ["레몬차", "유기농 레몬차", "계피맛 건강 알사탕", "계피맛 알사탕"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
     "가비아": {
@@ -140,7 +140,7 @@ export const charInfo = {
 
     // 냉정
     "이드": {
-        names: { ko: "이드", en: "Ed", 'zh-CN': "伊德", 'zh-TW': "", ja: "" },
+        names: { ko: "이드", en: "Ed", 'zh-CN': "伊德", 'zh-TW': "", ja: "イード" },
         food: { verylike: ["1급 비밀의 포도주스"], like: ["UFC 당근 튀김", "비밀의 포도주스", "UFC 야채 튀김"], hate: ["따뜻한 아이스 아메리카노", "계피맛 알사탕", "뜨거운 냉동 아메리카노", "계피맛 건강 알사탕"] },
         stats: { default: { grade: 3, type: "냉정" } }
     },
