@@ -32,7 +32,7 @@ const CharacterSearch = ({ setTarget }) => {
     // console.log(searchList.length, language)
 
     return (
-        <div className="fixed flex flex-col lg:flex-row items-center justify-center gap-4 py-2 sm:py-4 bg-white w-full z-40 border-b-2 border-gray-200">
+        <div className="fixed flex flex-col lg:flex-row items-center justify-center gap-4 py-2 lg:py-4 bg-white w-full z-40 border-b-2 border-gray-200">
             <div className="flex items-center gap-x-4">
                 <span className="text-[24px] font-bold">
                     트릭컬 연회장 음식 호불호
@@ -61,7 +61,7 @@ const CharacterSearch = ({ setTarget }) => {
                     </div>
                     {open && (
                         <div className="absolute z-10 bg-white text-[12px] flex shadow-lg shadow-gray-300 w-full pl-2 pr-4">
-                            <div className={`flex w-[65%] pr-4 gap-y-1 max-h-[435.6px] bg-red ${searchList.length > 0 && 'flex-wrap content-start overflow-y-scroll'}`}>
+                            <div className={`flex w-[65%] pr-4 gap-y-1 max-h-[435.6px] ${searchList.length > 0 && 'flex-wrap content-start overflow-y-scroll'}`}>
                                 {searchList.length > 0 ? searchList.map(name => {
 
                                     const charName = t(`char.${name}`)
@@ -75,17 +75,16 @@ const CharacterSearch = ({ setTarget }) => {
                                                 addHistory(name);
                                             }}
                                             key={'search_character' + name}
-                                            className="w-[30%] hover:brightness-90 hover:bg-orange-50 cursor-pointer flex flex-col items-center max-h-[100px] sm:basis-1/3 basis-1/2">
+                                            className="min-w-0 overflow-hidden hover:brightness-90 hover:bg-orange-50 cursor-pointer flex flex-col items-center max-h-[100px] sm:basis-1/3 basis-1/2">
 
                                             <img
                                                 src={`${process.env.PUBLIC_URL}/images/character/profile/${name}.webp`}
                                                 className=""
                                                 alt={charName}
                                                 title={charName} />
-                                            <div className="flex justify-center w-full">
-                                                <div className="truncate font-bold">
-                                                    {charName}
-                                                </div>
+
+                                            <div className="truncate font-bold text-center w-full min-w-0">
+                                                {charName}
                                             </div>
                                         </div>
                                     )

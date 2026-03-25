@@ -1,14 +1,29 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { charInfo } from "../../../data/i18n/charInfo";
-import { useLanguage } from "../../../util/langUtils";
+import MyAccordion from "../../commons/Accordion";
+import { charInfo } from "../../data/i18n/charInfo";
+import { getAccoState, updateAccoState } from "../../util/accordionUtils";
+import { useLanguage } from "../../util/langUtils";
 
 const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike, hate, setHate, soso, setSoso }) => {
 
     const { foodGradeList, foodGrade, foodBonus, language, server, personality } = useLanguage();
     const { t } = useTranslation();
+    const [accoState, setAccoState] = useState(() => getAccoState())
+    // const [excludeOpen, setExcludeOpen] = useState(false);
 
     // console.log(language)
+
+    const handleAccoState = (pers, isOpen) => {
+        setAccoState(prev => ({
+            ...prev,
+            [pers]: isOpen
+        }))
+    }
+
+    useEffect(() => {
+        updateAccoState(accoState);
+    }, [accoState]);
 
     const foodMap = useMemo(() => {
         const map = {};
@@ -99,26 +114,22 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
         });
 
         return group;
-    }, [server]);
+    }, [server, personality]);
 
     // console.log(persGroup)
 
-    const handleSetTarget = (t) => {
-        if (t === target) {
-            setTarget("")
-        } else {
-            setTarget(t)
-        }
-    }
+    const handleSetTarget = useCallback((t) => {
+        setTarget(prev => (prev === t ? "" : t));
+    }, [target, setTarget])
 
-    const targetColor = (item) => {
+    const targetColor = useCallback((item) => {
 
         return verylike?.includes(item) ? 'bg-gradient-to-br from-[rgb(255,168,160)] to-[rgb(14,165,233)]'
             : like?.includes(item) ? 'bg-lime-500'
                 : hate?.includes(item) ? 'bg-red-500'
                     : soso?.includes(item) ? 'bg-yellow-300'
                         : target === item ? 'bg-orange-300' : '';
-    }
+    }, [verylike, like, hate, soso, target])
 
     const foodListHeaderColor = (l) => {
 
@@ -128,16 +139,6 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                     : l === 2 ? 'bg-[rgb(114,216,133)]'
                         : l === 1 ? 'bg-[rgb(193,193,193)]'
                             : l === 0 ? 'bg-[rgb(230,230,230)]' : '';
-    }
-
-    const charListHeaderColor = (t) => {
-
-        return t === '순수' ? 'bg-[rgb(102,193,124)]'
-            : t === '냉정' ? 'bg-[rgb(131,185,235)]'
-                : t === '광기' ? 'bg-[rgb(235,131,154)]'
-                    : t === '활발' ? 'bg-[rgb(235,219,131)]'
-                        : t === '우울' ? 'bg-[rgb(198,131,236)]'
-                            : t === '공명' ? `bg-gradient-to-r from-[rgb(131,185,235)] to-[rgb(198,131,236)]` : '';
     }
 
     const isTargetAndLike = (item) => {
@@ -150,13 +151,13 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             target === '';
     }
 
-    const howMuchLike = (item) => {
+    const howMuchLike = useCallback((item) => {
 
         return verylike?.includes(item) ? 'verylike'
             : like?.includes(item) ? 'like'
                 : soso?.includes(item) ? 'soso'
                     : hate.includes(item) && 'hate';
-    }
+    }, [verylike, like, hate, soso])
 
     return (
         <div className="">
@@ -170,7 +171,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                     {/* 음식칸 */}
                     <div className="relative md:mr-8 mr-2 max-w-[47%]">
                         {foodGradeList.map((l, i) => (
-                            <div key={i} className="bg-white border-x-2 border-black">
+                            <div key={'foodList_' + i} className="bg-white border-x-2 border-black">
                                 {/* 상단 색상칸 */}
                                 <div className={`h-8 py-1 ${foodListHeaderColor(l)}`}>
                                     <div className="items-start md:flex md:flex-row hidden gap-x-3">
@@ -250,7 +251,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                 <div className="flex flex-wrap text-[10px]">
                                     {foodGrade[l].map((item, i) => (
                                         <div
-                                            key={i}
+                                            key={'foodItem_' + item}
                                             className={`p-[2px] hover:bg-orange-200 cursor-pointer group relative ${targetColor(item)} 
                                             lg:w-1/6 md:w-[20%] xxs:w-[33.3%] w-[50%]`}
                                             onClick={() => handleSetTarget(item)}>
@@ -282,72 +283,36 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                         )}
                     </div>
                     {/* 사도칸 */}
-                    <div className="max-w-[47%]">
+                    <div className="relative min-w-[47%] max-w-[47%]">
                         {/* 성격 블럭 */}
                         {personality.map((p, i) => (
-                            <div key={i} className={`flex flex-wrap border-x-2 border-black`}>
-                                <div className={`h-8 w-full font-bold ${charListHeaderColor(p)} flex py-1 items-center pl-1`}>
-                                    <img
-                                        src={`${process.env.PUBLIC_URL}/images/icon/${p}.png`}
-                                        className={`w-5 object-contain flex items-center`}
-                                        alt={t(`personality.${p}`)}
-                                        title={t(`personality.${p}`)} />
-                                    <span className="pl-1 py-1">
-                                        {t(`personality.${p}`)}
-                                    </span>
-                                </div>
-                                <div className="flex flex-wrap justify-start w-full">
-                                    {/* 캐릭터 블럭 */}
-                                    {persGroup[p].map((c, i) => {
+                            <div key={'pers_' + p} className={`w-full border-x-2 border-black`}>
+                                <MyAccordion
+                                    open={accoState[p] ?? true}
+                                    onOpenChange={(open) => handleAccoState(p, open)}
+                                    persKey={p}
+                                    headerText={t(`personality.${p}`)}
+                                    items={persGroup[p]}
+                                    targetColor={targetColor}
+                                    handleSetTarget={handleSetTarget}
+                                    server={server}
+                                    t={t}
+                                    howMuchLike={howMuchLike}
+                                />
 
-                                        const charName = t(`char.${c}`)
-                                        const grade = server === 'global' ? charInfo[c].stats.global?.grade || charInfo[c].stats.default?.grade : charInfo[c].stats.default?.grade;
-
-                                        // console.log(persGroup)
-
-                                        return (
-                                            <div
-                                                key={i}
-                                                className={`hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative p-1
-                                            lg:w-[12.5%] md:w-[16.65%] xs:w-[25%] w-[33.3%]
-                                            ${targetColor(c)}`}
-                                                onClick={() => handleSetTarget(c)}>
-
-                                                <div className="relative flex justify-center text-[10px]">
-                                                    <img
-                                                        src={`${process.env.PUBLIC_URL}/images/character/profile/${c}.webp`}
-                                                        className="h-[60px] w-auto object-contain m-2"
-                                                        alt={charName}
-                                                        title={charName} />
-                                                    <img
-                                                        src={`${process.env.PUBLIC_URL}/images/character/${grade}.png`}
-                                                        className="h-[10px] absolute bottom-[-6px] w-auto object-contain m-2"
-                                                        alt={charName}
-                                                        title={charName} />
-                                                    {howMuchLike(c) && (
-                                                        <img
-                                                            src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(c)}.webp`}
-                                                            className={`w-4 absolute top-[-8px] right-[-10px] rotate-12`}
-                                                            alt={charName}
-                                                            title={charName} />
-                                                    )}
-                                                </div>
-                                                <span className="xs:text-[12px] text-[11px] flex justify-center items-center text-wrap font-bold">
-                                                    <span className=" truncate">
-                                                        {charName}
-                                                    </span>
-                                                </span>
-                                            </div>
-
-                                        )
-                                    })}
-                                </div>
                             </div>
                         ))}
+
+                        {/* <div className="absolute -top-12 right-0 sm:left-0 sm:mr-1 p-1">
+                            <button
+                                onClick={() => setExcludeOpen(p => !p)}>
+                                <ExcludeIcon />
+                            </button>
+                        </div> */}
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactGA from 'react-ga';
-import FoodComponent from "../components/trickcal/food/FoodComponent";
+import FoodComponent from "../components/food/FoodComponent";
 import CharacterSearch from "../layouts/CharacterSearch";
 import Footer from "../layouts/Footer";
 
