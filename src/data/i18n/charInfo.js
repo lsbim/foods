@@ -478,6 +478,11 @@ export const charInfo = {
         food: { verylike: ["악령 푸딩"], like: ["석류석 열매", "유령 푸딩", "석류석 화채"], hate: ["캔 사료", "호박 스프", "고급 캔 사료", "호박 스튜"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
+    "네르(빡침)": {
+        names: { ko: "네르(빡침)", en: "Ner(Angry)", 'zh-CN': "涅尔(生气)", 'zh-TW': "", ja: "" },
+        food: { verylike: ["저당 마시멜로 마카롱"], like: ["마시멜로 마카롱", "멜론 보코치니", "머스크 멜론 보코치니"], hate: ["캬라멜 팝콘", "해초 샐러드", "엘플릭스 캬라멜 팝콘", "해초 포케"] },
+        stats: { default: { grade: 3, type: "활발" } }
+    },
     "마리": {
         names: { ko: "마리", en: "Marie", 'zh-CN': "玛丽", 'zh-TW': "", ja: "マリー" },
         food: { verylike: ["UFC 야채 튀김"], like: ["UFC 당근 튀김", "크림 브륄레", "소프트 크림 브륄레"], hate: ["계피맛 알사탕", "석류석 열매", "계피맛 건강 알사탕", "석류석 화채"] },
