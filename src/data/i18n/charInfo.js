@@ -479,7 +479,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "활발" } }
     },
     "네르(빡침)": {
-        names: { ko: "네르(빡침)", en: "Ner(Angry)", 'zh-CN': "涅尔(生气)", 'zh-TW': "", ja: "" },
+        names: { ko: "네르(빡침)", en: "Ner(Angry)", 'zh-CN': "涅尔(愤怒)", 'zh-TW': "", ja: "" },
         food: { verylike: ["저당 마시멜로 마카롱"], like: ["마시멜로 마카롱", "멜론 보코치니", "머스크 멜론 보코치니"], hate: ["캬라멜 팝콘", "해초 샐러드", "엘플릭스 캬라멜 팝콘", "해초 포케"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
