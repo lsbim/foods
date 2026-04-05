@@ -42,9 +42,14 @@ const LangSelector = () => {
     };
 
     return (
-        <div
+        <button
             ref={dropdownRef}
             onClick={() => setIsOn(!isOn)}
+            onBlur={(e) => {
+                if (!e.currentTarget.contains(e.relatedTarget)) {
+                    setIsOn(false);
+                }
+            }}
             className="relative z-40 select-none">
             <div className={`flex p-2 items-center cursor-pointer hover:bg-zinc-100 rounded-md transition duration-150 ${isOn && 'bg-zinc-100'}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -71,7 +76,7 @@ const LangSelector = () => {
                     ))}
                 </div>
             )}
-        </div>
+        </button>
     );
 }
 

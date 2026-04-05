@@ -42,7 +42,15 @@ const CharacterSearch = ({ setTarget }) => {
                 </div>
             </div>
             <div className="flex items-center gap-x-1">
-                <div ref={containerRef} className="relative sm:w-[380px] w-[300px]">
+                <div
+                    ref={containerRef}
+                    className="relative sm:w-[380px] w-[300px]"
+                    onBlur={(e) => {
+                        if (!e.currentTarget.contains(e.relatedTarget)) {
+                            setOpen(false);
+                        }
+                    }}
+                >
                     <div className={`flex items-center gap-x-1 border-[2px] border-black rounded-md p-2 ${open && searchList.length > 0 ? 'border-white shadow-md rounded-b-none' : ''}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4 text-gray-600">
 

@@ -117,4 +117,4 @@ const charListHeaderColor = (t) => {
                         : t === '공명' ? `bg-gradient-to-r from-[rgb(131,185,235)] to-[rgb(198,131,236)]` : '';
 }
 
-export default React.memo(MyAccordion);;
+export default React.memo(MyAccordion);
