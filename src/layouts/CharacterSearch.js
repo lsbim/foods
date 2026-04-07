@@ -76,7 +76,7 @@ const CharacterSearch = ({ setTarget }) => {
 
                                     return (
                                         <div
-                                            onClick={() => {
+                                            onMouseDown={() => {
                                                 setTarget(name);
                                                 setOpen(false);
                                                 setSearch('');
@@ -114,7 +114,7 @@ const CharacterSearch = ({ setTarget }) => {
 
                                     return (
                                         <div
-                                            onClick={() => {
+                                            onMouseDown={() => {
                                                 setTarget(recent);
                                                 setOpen(false);
                                                 setSearch('');
