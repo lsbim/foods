@@ -580,7 +580,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "우울" } }
     },
     "스노키": {
-        names: { ko: "스노키", en: "Snorky", 'zh-CN': "斯诺琪", 'zh-TW': "", ja: "" },
+        names: { ko: "스노키", en: "Snorky", 'zh-CN': "斯诺琪", 'zh-TW': "", ja: "スノーキー" },
         food: { verylike: ["찹쌀밥 한 공기"], like: ["미숫가루", "쌀밥 한 공기", "927곡 미숫가루"], hate: ["비밀의 포도주스", "UFC 당근 튀김", "1급 비밀의 포도주스", "UFC 야채 튀김"] },
         stats: { default: { grade: 3, type: "우울" } }
     },
