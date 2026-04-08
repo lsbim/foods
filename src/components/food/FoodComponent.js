@@ -131,16 +131,6 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                         : target === item ? 'bg-orange-300' : '';
     }, [verylike, like, hate, soso, target])
 
-    const foodListHeaderColor = (l) => {
-
-        return l === 5 ? 'bg-[rgb(244,232,163)]'
-            : l === 4 ? 'bg-[rgb(196,142,253)]'
-                : l === 3 ? 'bg-[rgb(109,175,246)]'
-                    : l === 2 ? 'bg-[rgb(114,216,133)]'
-                        : l === 1 ? 'bg-[rgb(193,193,193)]'
-                            : l === 0 ? 'bg-[rgb(230,230,230)]' : '';
-    }
-
     const isTargetAndLike = (item) => {
 
         return (verylike?.includes(item) ||
@@ -171,9 +161,9 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                     {/* 음식칸 */}
                     <div className="relative md:mr-8 mr-2 max-w-[47%]">
                         {foodGradeList.map((l, i) => (
-                            <div key={'foodList_' + i} className="bg-white border-x-2 border-black">
+                            <div key={'foodList_' + i} className="bg-white mb-1">
                                 {/* 상단 색상칸 */}
-                                <div className={`h-8 py-1 ${foodListHeaderColor(l)}`}>
+                                <div className={`h-8 py-1 mb-1 ${foodListHeaderColor(l)} ${foodListHeaderShadow(l)} rounded-md`}>
                                     <div className="items-start md:flex md:flex-row hidden gap-x-3">
                                         {l === 0 ? (
                                             language === 'ko' ? (
@@ -252,7 +242,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                     {foodGrade[l].map((item, i) => (
                                         <div
                                             key={'foodItem_' + item}
-                                            className={`p-[2px] hover:bg-orange-200 cursor-pointer group relative ${targetColor(item)} 
+                                            className={`p-[2px] hover:bg-orange-200 cursor-pointer group relative ${targetColor(item)} rounded-md
                                             lg:w-1/6 md:w-[20%] xxs:w-[33.3%] w-[50%]`}
                                             onClick={() => handleSetTarget(item)}>
                                             {/* 선택되지 않은 음식은 투명도 40% */}
@@ -286,7 +276,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                     <div className="relative min-w-[47%] max-w-[47%]">
                         {/* 성격 블럭 */}
                         {personality.map((p, i) => (
-                            <div key={'pers_' + p} className={`w-full border-x-2 border-black`}>
+                            <div key={'pers_' + p} className={`w-full`}>
                                 <MyAccordion
                                     open={accoState[p] ?? true}
                                     onOpenChange={(open) => handleAccoState(p, open)}
@@ -314,6 +304,26 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             </div>
         </div >
     );
+}
+
+function foodListHeaderColor(l) {
+
+    return l === 5 ? 'bg-[rgb(244,232,163)]'
+        : l === 4 ? 'bg-[rgb(196,142,253)]'
+            : l === 3 ? 'bg-[rgb(109,175,246)]'
+                : l === 2 ? 'bg-[rgb(114,216,133)]'
+                    : l === 1 ? 'bg-[rgb(193,193,193)]'
+                        : l === 0 ? 'bg-[rgb(230,230,230)]' : '';
+}   
+
+function foodListHeaderShadow(l) {
+
+    return l === 5 ? 'shadow-[4px_4px_0_0_rgba(244,232,163,0.2)]'
+        : l === 4 ? 'shadow-[4px_4px_0_0_rgba(196,142,253,0.2)]'
+            : l === 3 ? 'shadow-[4px_4px_0_0_rgba(109,175,246,0.2)]'
+                : l === 2 ? 'shadow-[4px_4px_0_0_rgba(114,216,133,0.2)]'
+                    : l === 1 ? 'shadow-[4px_4px_0_0_rgba(193,193,193,0.2)]'
+                        : l === 0 ? 'shadow-[4px_4px_0_0_rgba(230,230,230,0.2)]' : '';
 }
 
 export default FoodComponent;

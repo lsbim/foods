@@ -32,7 +32,7 @@ const CharacterSearch = ({ setTarget }) => {
     // console.log(searchList.length, language)
 
     return (
-        <div className="fixed flex flex-col lg:flex-row items-center justify-center gap-4 py-2 lg:py-4 bg-white w-full z-40 border-b-2 border-gray-200">
+        <div className="opacity-95 fixed flex flex-col lg:flex-row items-center justify-center gap-4 py-2 lg:py-4 bg-white w-full z-40 shadow-[0_4px_0_0_rgba(230,230,230,0.4)]">
             <div className="flex items-center gap-x-4">
                 <span className="text-[24px] font-bold">
                     트릭컬 연회장 음식 호불호

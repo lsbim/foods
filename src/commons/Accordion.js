@@ -13,7 +13,7 @@ const MyAccordion = ({ persKey, headerText, open, onOpenChange, items, server, t
             type="single"
             value={open ? persKey : ''}
             onValueChange={(v) => onOpenChange(!!v)}
-            className="block w-full rounded-lg shadow-sm"
+            className="block w-full rounded-lg shadow-sm mb-1" // mb-1 = 그림자 크기
             collapsible
         >
             <Accordion.Item
@@ -22,8 +22,8 @@ const MyAccordion = ({ persKey, headerText, open, onOpenChange, items, server, t
                 className='w-full'
             >
                 <Accordion.Header className="flex">
-                    <Accordion.Trigger className='group w-full'>
-                        <div className={`w-full h-8 flex font-bold justify-between items-center cursor-pointer ${charListHeaderColor(persKey)}`}>
+                    <Accordion.Trigger className='group w-full gap-y-1'>
+                        <div className={`rounded-md p-1 w-full h-8 flex font-bold justify-between items-center cursor-pointer ${charListHeaderColor(persKey)} ${charListHeaderShadow(persKey)}`}>
                             <div className={`h-8 w-full flex py-1 items-center pl-1`}>
                                 <img
                                     src={`${process.env.PUBLIC_URL}/images/icon/${persKey}.png`}
@@ -59,42 +59,45 @@ const MyAccordion = ({ persKey, headerText, open, onOpenChange, items, server, t
                         {items.map((c, i) => {
 
                             const charName = t(`char.${c}`)
-                            const grade = server === 'global' ? charInfo[c].stats.global?.grade || charInfo[c].stats.default?.grade : charInfo[c].stats.default?.grade;
+                            // const grade = server === 'global' ? charInfo[c].stats.global?.grade || charInfo[c].stats.default?.grade : charInfo[c].stats.default?.grade;
 
                             // console.log(persGroup)
 
                             return (
                                 <div
                                     key={'character_' + c}
-                                    className={`hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative p-1
-                                            lg:w-[12.5%] md:w-[16.65%] xs:w-[25%] w-[33.3%]
-                                            ${targetColor(c)}`}
+                                    className={`hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative lg:p-2 p-1 md:w-[16.65%] xs:w-[25%] w-[33.3%] ${targetColor(c)} rounded-md`}
                                     onClick={() => handleSetTarget(c)}>
 
-                                    <div className="relative flex justify-center text-[10px]">
-                                        <img
-                                            src={`${process.env.PUBLIC_URL}/images/character/profile/${c}.webp`}
-                                            className="h-[60px] w-auto object-contain m-2"
-                                            alt={charName}
-                                            title={charName} />
-                                        <img
-                                            src={`${process.env.PUBLIC_URL}/images/character/${grade}.png`}
-                                            className="h-[10px] absolute bottom-[-6px] w-auto object-contain m-2"
-                                            alt={charName}
-                                            title={charName} />
-                                        {howMuchLike(c) && (
+                                    <div className="flex flex-col justify-center items-center">
+                                        <div className="relative inline-block w-full">
                                             <img
-                                                src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(c)}.webp`}
-                                                className={`w-4 absolute top-[-8px] right-[-10px] rotate-12`}
+                                                src={`${process.env.PUBLIC_URL}/images/character/profile/${c}.webp`}
+                                                className="w-full h-auto aspect-square block rounded-t-md"
                                                 alt={charName}
-                                                title={charName} />
-                                        )}
-                                    </div>
-                                    <span className="xs:text-[12px] text-[11px] flex justify-center items-center text-wrap font-bold">
-                                        <span className=" truncate">
-                                            {charName}
+                                                title={charName}
+                                            />
+                                            {/* <img
+                                                src={`${process.env.PUBLIC_URL}/images/character/${grade}.png`}
+                                                className="absolute bottom-[-6px] left-1/2 -translate-x-1/2 h-[10px] w-auto max-w-none"
+                                                alt={charName}
+                                                title={charName}
+                                            /> */}
+                                            {howMuchLike(c) && (
+                                                <img
+                                                    src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(c)}.webp`}
+                                                    className="absolute top-[-8px] right-[-10px] w-4 rotate-12"
+                                                    alt={charName}
+                                                    title={charName}
+                                                />
+                                            )}
+                                        </div>
+                                        <span className="w-full xs:text-[12px] text-[11px] flex justify-center items-center text-wrap font-bold bg-zinc-200 py-[1px] rounded-b-md">
+                                            <span className=" truncate">
+                                                {charName}
+                                            </span>
                                         </span>
-                                    </span>
+                                    </div>
                                 </div>
 
                             )
@@ -115,6 +118,16 @@ const charListHeaderColor = (t) => {
                 : t === '활발' ? 'bg-[rgb(235,219,131)]'
                     : t === '우울' ? 'bg-[rgb(198,131,236)]'
                         : t === '공명' ? `bg-gradient-to-r from-[rgb(131,185,235)] to-[rgb(198,131,236)]` : '';
+}
+
+const charListHeaderShadow = (t) => {
+
+    return t === '순수' ? 'shadow-[4px_4px_0_0_rgba(102,193,124,0.2)]'
+        : t === '냉정' ? 'shadow-[4px_4px_0_0_rgba(131,185,235,0.2)]'
+            : t === '광기' ? 'shadow-[4px_4px_0_0_rgba(235,131,154,0.2)]'
+                : t === '활발' ? 'shadow-[4px_4px_0_0_rgba(235,219,131,0.2)]'
+                    : t === '우울' ? 'shadow-[4px_4px_0_0_rgba(198,131,236,0.2)]'
+                        : t === '공명' ? `shadow-[4px_4px_0_0_rgba(131,185,235,0.2)] shadow-[4px_4px_0_0_rgba(198,131,236,0.2)]` : '';
 }
 
 export default React.memo(MyAccordion);
