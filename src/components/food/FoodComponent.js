@@ -124,7 +124,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
 
     const targetColor = useCallback((item) => {
 
-        return verylike?.includes(item) ? 'bg-gradient-to-br from-[rgb(255,168,160)] to-[rgb(14,165,233)]'
+        return verylike?.includes(item) ? 'bg-gradient-to-br from-[rgb(245,163,183)] to-[rgb(14,165,233)]'
             : like?.includes(item) ? 'bg-lime-500'
                 : hate?.includes(item) ? 'bg-red-500'
                     : soso?.includes(item) ? 'bg-yellow-300'
