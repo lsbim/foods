@@ -1,12 +1,9 @@
-import { getChoseong } from "es-hangul";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { charInfo } from "../data/i18n/charInfo";
-import { useLanguage } from "../util/langUtils";
+import { useCharSearch } from "../hooks/useCharSearch";
 import { recentSearch } from "../util/recentSearch";
 import LangSelector from "./LangSelector";
 import ServerSelector from "./ServerSelector";
-import { useCharSearch } from "../hooks/useCharSearch";
 
 const CharacterSearch = ({ setTarget }) => {
     const [search, setSearch] = useState('');

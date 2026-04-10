@@ -1,5 +1,4 @@
 import * as Accordion from '@radix-ui/react-accordion';
-import { charInfo } from '../data/i18n/charInfo';
 import React from 'react';
 
 
@@ -92,7 +91,7 @@ const MyAccordion = ({ persKey, headerText, open, onOpenChange, items, server, t
                                                 />
                                             )}
                                         </div>
-                                        <span className="w-full xs:text-[12px] text-[11px] flex justify-center items-center text-wrap font-bold bg-zinc-200 py-[1px] rounded-b-md">
+                                        <span className="w-full xs:text-[12px] text-[11px] flex justify-center items-center text-wrap font-bold bg-zinc-300 py-[1px] rounded-b-md bg-opacity-75">
                                             <span className=" truncate">
                                                 {charName}
                                             </span>
