@@ -363,7 +363,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "광기" } }
     },
     "헤일리(멀쩡)": {
-        names: { ko: "헤일리(멀쩡)", en: "Haley(Okay)", 'zh-CN': "海莉(清醒)", 'zh-TW': "", ja: "" },
+        names: { ko: "헤일리(멀쩡)", en: "Haley(Sane)", 'zh-CN': "海莉(清醒)", 'zh-TW': "", ja: "" },
         food: { verylike: ["찹쌀밥 한 공기"], like: ["쌀밥 한 공기", "레몬차", "유기농 레몬차"], hate: ["따뜻한 아이스 아메리카노", "민트 초코 아이스크림", "뜨거운 냉동 아메리카노", "트리플 민트 초코 아이스크림"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
