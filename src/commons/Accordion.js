@@ -152,7 +152,7 @@ const MyAccordion = ({
                     </Accordion.Trigger>
                 </Accordion.Header>
 
-                <Accordion.Content className="data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown">
+                <Accordion.Content className="data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown overflow-hidden">
                     <div className="flex flex-wrap justify-start w-full">
                         {/* 사도/음식 블럭 */}
                         {items.map((item) => {
@@ -180,7 +180,7 @@ const MyAccordion = ({
                                             {howMuchLike(item) && (
                                                 <img
                                                     src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(item)}.webp`}
-                                                    className="absolute top-[-8px] right-[-10px] w-4 rotate-12"
+                                                    className="absolute sm:top-[-8px] sm:right-[-10px] top-[-4px] right-[-5px] w-4 rotate-12"
                                                     alt={name}
                                                     title={name}
                                                 />
