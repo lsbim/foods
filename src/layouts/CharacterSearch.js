@@ -29,7 +29,7 @@ const CharacterSearch = ({ setTarget }) => {
     // console.log(searchList.length, language)
 
     return (
-        <header className="opacity-95 fixed flex items-center justify-center gap-4 py-4 bg-white w-full z-40 shadow-[0_4px_0_0_rgba(230,230,230,0.4)]">
+        <header className="fixed flex items-center justify-center gap-4 py-4 bg-white/85 backdrop-blur-sm w-full z-40 shadow-[0_4px_0_0_rgba(230,230,230,0.4)]">
             <div className="items-center gap-x-4 lg:inline hidden">
                 <span className="text-[24px] font-bold">
                     트릭컬 연회장 음식 호불호
@@ -45,7 +45,7 @@ const CharacterSearch = ({ setTarget }) => {
                         }
                     }}
                 >
-                    <div className={`flex items-center gap-x-1 border-[2px] border-black rounded-md p-2 ${open && searchList.length > 0 ? 'border-white shadow-md rounded-b-none' : ''}`}>
+                    <div className={`flex items-center gap-x-1 border-[2px] border-black rounded-md p-2 ${open && searchList.length > 0 ? 'border-white/85 shadow-md rounded-b-none' : ''}`}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4 text-gray-600">
 
                             <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -58,11 +58,12 @@ const CharacterSearch = ({ setTarget }) => {
                                 setSearch(e.target.value);
                             }}
                             onFocus={() => setOpen(true)}
-                            className="text-[13px] focus:outline-none xs:w-[380px] w-[240px]"
+                            // bg-transparent를 적용해야 input태그의 브라우저 기본 배경색이 사라짐
+                            className="text-[13px] focus:outline-none xs:w-[380px] w-[240px] bg-transparent"
                         />
                     </div>
                     {open && (
-                        <div className="absolute z-10 bg-white text-[12px] flex shadow-lg shadow-gray-300 w-full pl-2 pr-4 rounded-b-lg">
+                        <div className="absolute z-10 bg-white text-[12px] flex shadow-md shadow-gray-300 w-full pl-2 pr-4 rounded-b-lg">
                             <div className={`flex xs:w-[65%] w-[60%] pr-4 gap-y-1 max-h-[435.6px] ${searchList.length > 0 && 'flex-wrap content-start overflow-y-scroll'}`}>
                                 {searchList.length > 0 ? searchList.map(name => {
 
@@ -85,7 +86,7 @@ const CharacterSearch = ({ setTarget }) => {
                                                 alt={charName}
                                                 title={charName} />
 
-                                            <div className="truncate font-bold text-center w-full min-w-0">
+                                            <div className="truncate font-bold text-center w-full min-w-0 md:text-[13px] text-[11px]">
                                                 {charName}
                                             </div>
                                         </div>
@@ -93,7 +94,7 @@ const CharacterSearch = ({ setTarget }) => {
                                 }) : language === 'ko' ? (
                                     <div className="flex flex-col gap-y-2 items-center justify-center mx-auto text-gray-400 font-bold">
                                         <span className=" md:text-[14px] text-[10px]">
-                                            초성으로 검색할 수 있습니다.
+                                            초성검색이 가능합니다.
                                         </span>
                                         <span>
                                             ex) ㅁㅌ → 뮤트
@@ -115,8 +116,8 @@ const CharacterSearch = ({ setTarget }) => {
                                                 addHistory(recent);
                                             }}
                                             key={'recent_character' + recent}
-                                            className="flex justify-between hover:bg-gray-100 cursor-pointer px-1 py-2 ml-2 min-w-0 w-full">
-                                            <div className="flex items-center gap-x-1 xs:text-[14px] text-[12px]">
+                                            className="flex justify-between rounded-lg hover:bg-gray-200 cursor-pointer px-1 py-2 pl-2 ml-1 min-w-0 w-full">
+                                            <div className="flex items-center gap-x-1 xs:text-[13px] text-[11px]">
                                                 <img
                                                     src={`${process.env.PUBLIC_URL}/images/character/profile/${recent}.webp`}
                                                     className="h-[24px] w-auto"
