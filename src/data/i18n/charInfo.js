@@ -25,7 +25,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "순수" } }
     },
     "캬롯": {
-        names: { ko: "캬롯", en: "Kyarot", 'zh-CN': "卡萝特", 'zh-TW': "", ja: "" },
+        names: { ko: "캬롯", en: "Kyarot", 'zh-CN': "卡萝特", 'zh-TW': "", ja: "キャロット" },
         food: { verylike: ["두입초 쌈"], like: ["한입초 쌈", "꿀단지", "꿀꿀단지"], hate: ["따뜻한 아이스 아메리카노", "캔 사료", "뜨거운 냉동 아메리카노", "고급 캔 사료"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
