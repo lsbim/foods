@@ -498,6 +498,11 @@ export const charInfo = {
         food: { verylike: ["저당 마시멜로 마카롱"], like: ["마시멜로 마카롱", "멜론 보코치니", "머스크 멜론 보코치니"], hate: ["캬라멜 팝콘", "해초 샐러드", "엘플릭스 캬라멜 팝콘", "해초 포케"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
+    "레비(졸업)": {
+        names: { ko: "레비(졸업)", en: "Levi(Graduation)", 'zh-CN': "莱薇(毕业)", 'zh-TW': "", ja: "" },
+        food: { "verylike": ["엘플릭스 캬라멜 팝콘"], like: ["캬라멜 팝콘", "UFC 당근 튀김", "UFC 야채 튀김"], hate: ["코코넛 솔잎죽", "코코넛 만능 녹즙", "크림 브륄레", "소프트 크림 브륄레"] },
+        stats: { default: { grade: 3, type: "활발" } }
+    },
     "마리": {
         names: { ko: "마리", en: "Marie", 'zh-CN': "玛丽", 'zh-TW': "", ja: "マリー" },
         food: { verylike: ["UFC 야채 튀김"], like: ["UFC 당근 튀김", "크림 브륄레", "소프트 크림 브륄레"], hate: ["계피맛 알사탕", "석류석 열매", "계피맛 건강 알사탕", "석류석 화채"] },
