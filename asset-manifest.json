@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/foods/static/css/main.31c1b869.css",
-    "main.js": "/foods/static/js/main.6f76db49.js",
+    "main.css": "/foods/static/css/main.cafc26c9.css",
+    "main.js": "/foods/static/js/main.d995e73e.js",
     "static/js/206.02781fb5.chunk.js": "/foods/static/js/206.02781fb5.chunk.js",
     "static/media/NotoSansKR-Regular.ttf": "/foods/static/media/NotoSansKR-Regular.9bc92a36ed81392f698b.ttf",
     "index.html": "/foods/index.html"
   },
   "entrypoints": [
-    "static/css/main.31c1b869.css",
-    "static/js/main.6f76db49.js"
+    "static/css/main.cafc26c9.css",
+    "static/js/main.d995e73e.js"
   ]
 }
