@@ -499,7 +499,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "활발" } }
     },
     "레비(졸업)": {
-        names: { ko: "레비(졸업)", en: "Levi(Graduation)", 'zh-CN': "莱薇(毕业)", 'zh-TW': "", ja: "" },
+        names: { ko: "레비(졸업)", en: "Levi(Graduate)", 'zh-CN': "莱薇(毕业)", 'zh-TW': "", ja: "" },
         food: { "verylike": ["엘플릭스 캬라멜 팝콘"], like: ["캬라멜 팝콘", "UFC 당근 튀김", "UFC 야채 튀김"], hate: ["코코넛 솔잎죽", "코코넛 만능 녹즙", "크림 브륄레", "소프트 크림 브륄레"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
