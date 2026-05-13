@@ -63,7 +63,7 @@ const CharacterSearch = ({ setTarget }) => {
                         />
                     </div>
                     {open && (
-                        <div className="absolute z-10 bg-white/95 backdrop-blur-md text-[12px] flex shadow-md shadow-gray-300 w-full pl-2 pr-4 rounded-b-lg">
+                        <div className="absolute z-10 min-h-[436px] bg-white/95 backdrop-blur-md text-[12px] flex shadow-md shadow-gray-300 w-full pl-2 pr-4 rounded-b-lg">
                             <div className={`flex xs:w-[65%] w-[60%] pr-4 gap-y-1 max-h-[435.6px] ${searchList.length > 0 && 'flex-wrap content-start overflow-y-scroll'}`}>
                                 {searchList.length > 0 ? searchList.map(name => {
 
@@ -81,7 +81,7 @@ const CharacterSearch = ({ setTarget }) => {
                                             className="min-w-0 overflow-hidden hover:brightness-90 hover:bg-orange-50 cursor-pointer flex flex-col items-center max-h-[100px] sm:basis-1/3 basis-1/2">
 
                                             <img
-                                                src={`${process.env.PUBLIC_URL}/images/character/profile/${name}.webp`}
+                                                src={`${import.meta.env.BASE_URL}/images/character/profile/${name}.webp`}
                                                 className=""
                                                 alt={charName}
                                                 title={charName} />
@@ -119,7 +119,7 @@ const CharacterSearch = ({ setTarget }) => {
                                             className="flex justify-between rounded-lg hover:bg-gray-200 cursor-pointer px-1 py-2 pl-2 ml-1 min-w-0 w-full">
                                             <div className="flex items-center gap-x-1 xs:text-[13px] text-[11px]">
                                                 <img
-                                                    src={`${process.env.PUBLIC_URL}/images/character/profile/${recent}.webp`}
+                                                    src={`${import.meta.env.BASE_URL}/images/character/profile/${recent}.webp`}
                                                     className="h-[24px] w-auto"
                                                     alt={charName}
                                                     title={charName} />

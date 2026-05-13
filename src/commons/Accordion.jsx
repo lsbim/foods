@@ -50,7 +50,7 @@ const MyAccordion = ({
                             {type === 'character' && (
                                 <div className={`h-8 w-full flex py-1 items-center pl-1`}>
                                     <img
-                                        src={`${process.env.PUBLIC_URL}/images/icon/${itemsKey}.png`}
+                                        src={`${import.meta.env.BASE_URL}/images/icon/${itemsKey}.png`}
                                         className={`w-5 object-contain flex items-center`}
                                         alt={headerText}
                                         title={headerText} />
@@ -74,7 +74,7 @@ const MyAccordion = ({
                                             className="lg:pl-2 md:pl-1 flex font-semibold whitespace-nowrap"
                                             title="그럭저럭">
                                             <img
-                                                src={`${process.env.PUBLIC_URL}/images/icon/soso.webp`}
+                                                src={`${import.meta.env.BASE_URL}/images/icon/soso.webp`}
                                                 className={`md:w-6 w-3 mr-1 flex items-center object-contain`}
                                                 alt={'그럭저럭'}
                                                 title={'그럭저럭'} />
@@ -91,7 +91,7 @@ const MyAccordion = ({
                                                     className="pl-2 flex items-center font-semibold whitespace-nowrap"
                                                     title="매우좋아함">
                                                     <img
-                                                        src={`${process.env.PUBLIC_URL}/images/icon/verylike.webp`}
+                                                        src={`${import.meta.env.BASE_URL}/images/icon/verylike.webp`}
                                                         className={`md:w-6 w-3 mr-1 object-contain`}
                                                         alt={'매우좋아함'}
                                                         title={'매우좋아함'} />
@@ -105,7 +105,7 @@ const MyAccordion = ({
                                                     className="pl-2 flex items-center font-semibold whitespace-nowrap"
                                                     title="좋아함">
                                                     <img
-                                                        src={`${process.env.PUBLIC_URL}/images/icon/like.webp`}
+                                                        src={`${import.meta.env.BASE_URL}/images/icon/like.webp`}
                                                         className={`md:w-6 w-3 mr-1 object-contain`}
                                                         alt={'좋아함'}
                                                         title={'좋아함'} />
@@ -119,7 +119,7 @@ const MyAccordion = ({
                                                     className="pl-2 flex items-center font-semibold whitespace-nowrap"
                                                     title="싫어함">
                                                     <img
-                                                        src={`${process.env.PUBLIC_URL}/images/icon/hate.webp`}
+                                                        src={`${import.meta.env.BASE_URL}/images/icon/hate.webp`}
                                                         className={`md:w-6 w-3 mr-1 object-contain`}
                                                         alt={'싫어함'}
                                                         title={'싫어함'} />
@@ -158,7 +158,7 @@ const MyAccordion = ({
                         {items.map((item) => {
 
                             const name = type === 'character' ? t(`char.${item}`) : item;
-                            const imgUrl = `${process.env.PUBLIC_URL}/images/` + (type === 'character' ? 'character/profile/' : 'food/')
+                            const imgUrl = `${import.meta.env.BASE_URL}/images/` + (type === 'character' ? 'character/profile/' : 'food/')
                             // const grade = server === 'global' ? charInfo[c].stats.global?.grade || charInfo[c].stats.default?.grade : charInfo[c].stats.default?.grade;
 
                             // console.log(persGroup)
@@ -179,7 +179,7 @@ const MyAccordion = ({
                                             />
                                             {howMuchLike(item) && (
                                                 <img
-                                                    src={`${process.env.PUBLIC_URL}/images/icon/${howMuchLike(item)}.webp`}
+                                                    src={`${import.meta.env.BASE_URL}/images/icon/${howMuchLike(item)}.webp`}
                                                     className="absolute sm:top-[-8px] sm:right-[-10px] top-[-4px] right-[-5px] w-4 rotate-12"
                                                     alt={name}
                                                     title={name}

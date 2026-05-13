@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import ReactGA from 'react-ga';
+import { useState } from "react";
 import FoodComponent from "../components/food/FoodComponent";
 import CharacterSearch from "../layouts/CharacterSearch";
 import Footer from "../layouts/Footer";
@@ -11,12 +10,6 @@ const IndexPage = () => {
     const [like, setLike] = useState([]);
     const [hate, setHate] = useState([]);
     const [soso, setSoso] = useState([]);
-
-    function MyPage() {
-        useEffect(() => {
-            ReactGA.pageview(window.location.pathname + window.location.search);
-        }, []);
-    }
 
     // console.log("target: ", target)
 
