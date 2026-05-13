@@ -117,8 +117,20 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
     // console.log(persGroup)
 
     const handleSetTarget = useCallback((t) => {
-        setTarget(prev => (prev === t ? "" : t));
-    }, [target, setTarget])
+        setTarget(prev => {
+            const next = prev === t ? "" : t;
+    
+            if (next && window.gtag) {
+                window.gtag('event', 'select_target', {
+                    target_name: next,
+                    // charInfo에 있으면 사도 없으면 음식
+                    target_type: charInfo[next] ? 'character' : 'food',
+                });
+            }
+    
+            return next;
+        });
+    }, [setTarget])
 
     const targetColor = useCallback((item) => {
 
