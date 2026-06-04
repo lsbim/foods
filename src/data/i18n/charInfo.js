@@ -595,7 +595,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "우울" } }
     },
     "리스티": {
-        names: { ko: "리스티", en: "Risty", 'zh-CN': "莉斯缇", 'zh-TW': "", ja: "" },
+        names: { ko: "리스티", en: "Risty", 'zh-CN': "莉斯缇", 'zh-TW': "", ja: "リスティ" },
         food: { verylike: ["석류석 화채"], like: ["석류석 열매", "따뜻한 아이스 아메리카노", "뜨거운 냉동 아메리카노"], hate: ["멜론 보코치니", "허니갈릭 살몬", "머스크 멜론 보코치니", "로얄 허니갈릭 살몬"] },
         stats: { default: { grade: 3, type: "우울" } }
     },
