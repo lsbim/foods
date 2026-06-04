@@ -644,6 +644,11 @@ export const charInfo = {
         food: { verylike: ["찹쌀밥 한 공기"], like: ["쌀밥 한 공기", "초콜릿 아이스크림", "딥다크 초콜릿 아이스크림"], hate: ["우주식량", "ANSA 우주식량", "코코넛 솔잎죽", "코코넛 만능 녹즙"] },
         stats: { default: { grade: 3, type: "우울" } }
     },
+    "키샤": {
+        names: { ko: "키샤", en: "Kishya", 'zh-CN': "琦莎", 'zh-TW': "", ja: "" },
+        food: { verylike: ["석류석 화채"], like: ["석류석 열매", "금탕후루", "백금탕후루"], hate: [] },
+        stats: { default: { grade: 3, type: "우울" } }
+    },
     "레비": {
         names: { ko: "레비", en: "Levi", 'zh-CN': "莱薇", 'zh-TW': "", ja: "レヴィ" },
         food: { verylike: ["엘플릭스 캬라멜 팝콘"], like: ["캬라멜 팝콘", "UFC 당근 튀김", "UFC 야채 튀김"], hate: ["크림 브륄레", "코코넛 솔잎죽", "코코넛 만능 녹즙", "소프트 크림 브륄레"] },
