@@ -646,7 +646,7 @@ export const charInfo = {
     },
     "키샤": {
         names: { ko: "키샤", en: "Kishya", 'zh-CN': "琦莎", 'zh-TW': "", ja: "" },
-        food: { verylike: ["석류석 화채"], like: ["석류석 열매", "금탕후루", "백금탕후루"], hate: [] },
+        food: { verylike: ["석류석 화채"], like: ["석류석 열매", "금탕후루", "백금탕후루"], hate: ["코코넛 솔잎죽", "코코넛 만능 녹즙", "미숫가루", "927곡 미숫가루"] },
         stats: { default: { grade: 3, type: "우울" } }
     },
     "레비": {
