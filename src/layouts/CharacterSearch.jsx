@@ -78,15 +78,16 @@ const CharacterSearch = ({ setTarget }) => {
                                                 addHistory(name);
                                             }}
                                             key={'search_character' + name}
-                                            className="min-w-0 overflow-hidden hover:brightness-90 hover:bg-orange-50 cursor-pointer flex flex-col items-center max-h-[100px] sm:basis-1/3 basis-1/2">
+                                            className="min-w-0 overflow-hidden group cursor-pointer flex flex-col items-center max-h-[100px] sm:basis-1/3 basis-1/2">
+                                            <div className="overflow-hidden">
+                                                <img
+                                                    src={`${import.meta.env.BASE_URL}/images/character/profile/${name}.webp`}
+                                                    className="object-cover object-top origin-top scale-[1.5] group-hover:scale-[1.65] duration-300 transition-transform ease-out"
+                                                    alt={charName}
+                                                    title={charName} />
+                                            </div>
 
-                                            <img
-                                                src={`${import.meta.env.BASE_URL}/images/character/profile/${name}.webp`}
-                                                className=""
-                                                alt={charName}
-                                                title={charName} />
-
-                                            <div className="truncate font-bold text-center w-full min-w-0 md:text-[13px] text-[11px]">
+                                            <div className="truncate font-bold text-center w-full min-w-0 md:text-[12px] text-[11px] text-zinc-500 group-hover:text-black">
                                                 {charName}
                                             </div>
                                         </div>
@@ -118,11 +119,13 @@ const CharacterSearch = ({ setTarget }) => {
                                             key={'recent_character' + recent}
                                             className="flex justify-between rounded-lg hover:bg-gray-200 cursor-pointer px-1 py-2 pl-2 ml-1 min-w-0 w-full">
                                             <div className="flex items-center gap-x-1 xs:text-[13px] text-[11px]">
-                                                <img
-                                                    src={`${import.meta.env.BASE_URL}/images/character/profile/${recent}.webp`}
-                                                    className="h-[24px] w-auto"
-                                                    alt={charName}
-                                                    title={charName} />
+                                                <div className="overflow-hidden">
+                                                    <img
+                                                        src={`${import.meta.env.BASE_URL}/images/character/profile/${recent}.webp`}
+                                                        className="h-[24px] w-auto object-cover object-top origin-top scale-[1.5]"
+                                                        alt={charName}
+                                                        title={charName} />
+                                                </div>
                                                 <span className="truncate font-bold">
                                                     {charName}
                                                 </span>
