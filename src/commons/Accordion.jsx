@@ -197,7 +197,7 @@ const MyAccordion = ({
                                         {howMuchLike(item) && (
                                             <img
                                                 src={`${import.meta.env.BASE_URL}/images/icon/${howMuchLike(item)}.webp`}
-                                                className="absolute sm:top-[-8px] sm:right-[-10px] top-[-4px] right-[-5px] w-4 rotate-12"
+                                                className="absolute sm:top-[-8px] sm:right-[-10px] top-[-4px] right-[-5px] w-6 rotate-[18deg]"
                                                 alt={name}
                                                 title={name}
                                             />
