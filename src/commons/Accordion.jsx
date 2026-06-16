@@ -30,6 +30,13 @@ const MyAccordion = ({
     const accordionHeaderStyle = (type === 'character' ? `${charListHeaderColor(itemsKey)} ${charListHeaderShadow(itemsKey)}` : `${foodListHeaderColor(itemsKey)} ${foodListHeaderShadow(itemsKey)}`) +
         ' rounded-md p-1 w-full h-8 flex font-bold justify-between items-center cursor-pointer ';
 
+
+    const getPersonalityBg = (itemsKey, item) => {
+        if (targetColor(item)) return '';
+
+        return `${charListHeaderColor(itemsKey)} group-hover:bg-transparent`;
+    };
+
     return (
         <Accordion.Root
             type="single"
@@ -166,28 +173,37 @@ const MyAccordion = ({
                             return (
                                 <button
                                     key={'item_' + item}
-                                    className={`hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative sm:p-2 p-1 md:w-1/6 xs:w-1/4 w-1/3 ${targetColor(item)} rounded-md`}
+                                    className={`group hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative sm:p-2 p-1 md:w-1/6 xs:w-1/4 w-1/3 ${targetColor(item)} rounded-md`}
                                     onClick={() => handleSetTarget(item)}>
 
-                                    <div className="flex flex-col justify-center items-center">
-                                        <div className="relative inline-block w-full">
-                                            <img
-                                                src={`${imgUrl}${item}.webp`}
-                                                className={`w-full h-auto aspect-square object-contain block rounded-t-md ${type === 'food' && !isTargetAndLike(item) ? 'opacity-60' : ''}`}
-                                                alt={name}
-                                                title={name}
-                                            />
-                                            {howMuchLike(item) && (
+                                    <div className="flex flex-col justify-center items-center relative ">
+                                        <div className={`inline-block w-full overflow-hidden ${getPersonalityBg(itemsKey, item)} bg-opacity-60`}>
+                                            {type === 'character' ? (
                                                 <img
-                                                    src={`${import.meta.env.BASE_URL}/images/icon/${howMuchLike(item)}.webp`}
-                                                    className="absolute sm:top-[-8px] sm:right-[-10px] top-[-4px] right-[-5px] w-4 rotate-12"
+                                                    src={`${imgUrl}${item}.webp`}
+                                                    className="w-full h-full object-cover object-top origin-top scale-[1.5]"
+                                                    alt={name}
+                                                    title={name}
+                                                />
+                                            ) : (
+                                                <img
+                                                    src={`${imgUrl}${item}.webp`}
+                                                    className={`w-full h-auto aspect-square object-contain block rounded-t-md ${type === 'food' && !isTargetAndLike(item) ? 'opacity-60' : ''}`}
                                                     alt={name}
                                                     title={name}
                                                 />
                                             )}
                                         </div>
+                                        {howMuchLike(item) && (
+                                            <img
+                                                src={`${import.meta.env.BASE_URL}/images/icon/${howMuchLike(item)}.webp`}
+                                                className="absolute sm:top-[-8px] sm:right-[-10px] top-[-4px] right-[-5px] w-4 rotate-12"
+                                                alt={name}
+                                                title={name}
+                                            />
+                                        )}
                                         {type === 'character' && (
-                                            <span className="w-full xs:text-[12px] text-[11px] flex justify-center items-center text-wrap font-bold bg-zinc-300 py-[1px] rounded-b-md bg-opacity-75">
+                                            <span className="w-full xs:text-[12px] text-[11px] flex justify-center items-center text-wrap font-bold bg-zinc-200/75 py-[1px] rounded-b-md">
                                                 <span className=" truncate">
                                                     {name}
                                                 </span>
