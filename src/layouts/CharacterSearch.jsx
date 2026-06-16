@@ -52,7 +52,7 @@ const CharacterSearch = ({ setTarget }) => {
                         </svg>
                         <input
                             type="text"
-                            placeholder={language === 'ko' ? '사도 검색' : 'Search'}
+                            placeholder={language === 'ko' ? '사도 검색(에르핀, ㅇㄹㅍ, ㅇㄿ)' : 'Search'}
                             value={search}
                             onChange={(e) => {
                                 setSearch(e.target.value);
