@@ -328,7 +328,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "광기" } }
     },
     "리뉴아": {
-        names: { ko: "리뉴아", en: "Renewa", 'zh-CN': "莉纽阿", 'zh-TW': "", ja: "" },
+        names: { ko: "리뉴아", en: "Renewa", 'zh-CN': "莉纽阿", 'zh-TW': "", ja: "リニュア" },
         food: { verylike: ["유기농 레몬차"], like: ["레몬차", "우주식량", "ANSA 우주식량"], hate: ["캬라멜 팝콘", "비밀의 포도주스", "엘플릭스 캬라멜 팝콘", "1급 비밀의 포도주스"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
@@ -375,6 +375,11 @@ export const charInfo = {
     "헤일리(멀쩡)": {
         names: { ko: "헤일리(멀쩡)", en: "Haley(Sane)", 'zh-CN': "海莉(清醒)", 'zh-TW': "", ja: "" },
         food: { verylike: ["찹쌀밥 한 공기"], like: ["쌀밥 한 공기", "레몬차", "유기농 레몬차"], hate: ["따뜻한 아이스 아메리카노", "민트 초코 아이스크림", "뜨거운 냉동 아메리카노", "트리플 민트 초코 아이스크림"] },
+        stats: { default: { grade: 3, type: "광기" } }
+    },
+    "실비아": {
+        names: { ko: "실비아", en: "Silvia", 'zh-CN': "希尔维娅", 'zh-TW': "", ja: "" },
+        food: { verylike: ["유기농 레몬차"], like: ["보석 타르트", "레몬차", "보물 타르트"], hate: [] },
         stats: { default: { grade: 3, type: "광기" } }
     },
     "마에스트로 2호": {
