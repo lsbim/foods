@@ -379,7 +379,7 @@ export const charInfo = {
     },
     "실비아": {
         names: { ko: "실비아", en: "Silvia", 'zh-CN': "希尔维娅", 'zh-TW': "", ja: "" },
-        food: { verylike: ["유기농 레몬차"], like: ["보석 타르트", "레몬차", "보물 타르트"], hate: [] },
+        food: { verylike: ["유기농 레몬차"], like: ["보석 타르트", "레몬차", "보물 타르트"], hate: ["만화 고기 구이", "해적 만화 고기 구이"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
     "마에스트로 2호": {
