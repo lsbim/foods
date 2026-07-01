@@ -208,7 +208,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "냉정" } }
     },
     "바롱": {
-        names: { ko: "바롱", en: "Barong", 'zh-CN': "巴隆", 'zh-TW': "", ja: "" },
+        names: { ko: "바롱", en: "Barong", 'zh-CN': "巴隆", 'zh-TW': "", ja: "バロン" },
         food: { verylike: ["보물 타르트"], like: ["계피맛 알사탕", "보석 타르트", "계피맛 건강 알사탕"], hate: ["한입초 쌈", "우주식량", "두입초 쌈", "ANSA 우주식량"] },
         stats: { default: { grade: 3, type: "냉정" } }
     },
