@@ -10,7 +10,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "순수" } }
     },
     "다야": {
-        names: { ko: "다야", en: "Daya", 'zh-CN': "达雅", 'zh-TW': "", ja: "" },
+        names: { ko: "다야", en: "Daya", 'zh-CN': "达雅", 'zh-TW': "", ja: "ダーヤ" },
         food: { verylike: ["보물 타르트"], like: ["레몬차", "보석 타르트", "유기농 레몬차"], hate: ["캔 사료", "용족 사탕", "고급 캔 사료", "용족 세공 사탕"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
