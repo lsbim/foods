@@ -444,7 +444,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "활발" } }
     },
     "티그": {
-        names: { ko: "티그", en: "Tig", 'zh-CN': "提格", 'zh-TW': "", ja: "" },
+        names: { ko: "티그", en: "Tig", 'zh-CN': "提格", 'zh-TW': "", ja: "ティグ" },
         food: { verylike: ["해적 만화 고기 구이"], like: ["만화 고기 구이", "비밀의 포도주스", "1급 비밀의 포도주스"], hate: ["캔 사료", "계피맛 알사탕", "고급 캔 사료", "계피맛 건강 알사탕"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
