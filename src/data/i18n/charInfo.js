@@ -328,7 +328,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "광기" } }
     },
     "롤렛": {
-        names: { ko: "롤렛", en: "Rollett", 'zh-CN': "罗莱特", 'zh-TW': "", ja: "" },
+        names: { ko: "롤렛", en: "Rollett", 'zh-CN': "罗莱特", 'zh-TW': "", ja: "ロレット" },
         food: { verylike: ["소프트 크림 브륄레"], like: ["크림 브륄레", "멜론 보코치니", "머스크 멜론 보코치니"], hate: ["비밀의 포도주스", "금탕후루", "1급 비밀의 포도주스", "백금탕후루"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
