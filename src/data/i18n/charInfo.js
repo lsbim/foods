@@ -523,6 +523,11 @@ export const charInfo = {
         food: { "verylike": ["엘플릭스 캬라멜 팝콘"], like: ["캬라멜 팝콘", "UFC 당근 튀김", "UFC 야채 튀김"], hate: ["코코넛 솔잎죽", "코코넛 만능 녹즙", "크림 브륄레", "소프트 크림 브륄레"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
+    "에슈르(마도)": {
+        names: { ko: "에슈르(마도)", en: "Ashur(Mage)", 'zh-CN': "艾舒尔(魔道)", 'zh-TW': "", ja: "" },
+        food: { verylike: ["UFC 야채 튀김"], like: ["캬라멜 팝콘", "UFC 당근 튀김", "엘플릭스 캬라멜 팝콘"], hate: ["석류석 열매", "멜론 보코치니", "석류석 화채", "머스크 멜론 보코치니"] },
+        stats: { default: { grade: 3, type: "활발" } }
+    },
     "마리": {
         names: { ko: "마리", en: "Marie", 'zh-CN': "玛丽", 'zh-TW': "", ja: "マリー" },
         food: { verylike: ["UFC 야채 튀김"], like: ["UFC 당근 튀김", "크림 브륄레", "소프트 크림 브륄레"], hate: ["계피맛 알사탕", "석류석 열매", "계피맛 건강 알사탕", "석류석 화채"] },
