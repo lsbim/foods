@@ -524,7 +524,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "활발" } }
     },
     "에슈르(마도)": {
-        names: { ko: "에슈르(마도)", en: "Ashur(Mage)", 'zh-CN': "艾舒尔(魔道)", 'zh-TW': "", ja: "" },
+        names: { ko: "에슈르(마도)", en: "Ashur(Magi)", 'zh-CN': "艾舒尔(魔道)", 'zh-TW': "", ja: "" },
         food: { verylike: ["UFC 야채 튀김"], like: ["캬라멜 팝콘", "UFC 당근 튀김", "엘플릭스 캬라멜 팝콘"], hate: ["석류석 열매", "멜론 보코치니", "석류석 화채", "머스크 멜론 보코치니"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
