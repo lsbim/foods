@@ -90,7 +90,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "순수" } }
     },
     "스패럿": {
-        names: { ko: "스패럿", en: "Sparrot", 'zh-CN': "", 'zh-TW': "", ja: "" },
+        names: { ko: "스패럿", en: "Sparrot", 'zh-CN': "斯帕洛特", 'zh-TW': "", ja: "" },
         food: { verylike: ["1급 비밀의 포도주스"], like: ["크림 브륄레", "비밀의 포도주스", "소프트 크림 브륄레"], hate: ["우주식량", "ANSA 우주식량", "코코넛 솔잎죽", "코코넛 만능 녹즙"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
