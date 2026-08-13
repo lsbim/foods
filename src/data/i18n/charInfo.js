@@ -89,6 +89,11 @@ export const charInfo = {
         food: { verylike: ["1급 비밀의 포도주스"], like: ["UFC 당근 튀김", "비밀의 포도주스", "UFC 야채 튀김"], hate: ["따뜻한 아이스 아메리카노", "계피맛 알사탕", "뜨거운 냉동 아메리카노", "계피맛 건강 알사탕"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
+    "스패럿": {
+        names: { ko: "스패럿", en: "Sparrot", 'zh-CN': "", 'zh-TW': "", ja: "" },
+        food: { verylike: ["1급 비밀의 포도주스"], like: ["크림 브륄레", "비밀의 포도주스", "소프트 크림 브륄레"], hate: ["우주식량", "ANSA 우주식량", "코코넛 솔잎죽", "코코넛 만능 녹즙"] },
+        stats: { default: { grade: 3, type: "순수" } }
+    },
     "가비아": {
         names: { ko: "가비아", en: "Gabia", 'zh-CN': "加维亚", 'zh-TW': "", ja: "ガヴィア" },
         food: { verylike: ["계피맛 건강 알사탕"], like: ["계피맛 알사탕", "레몬차", "유기농 레몬차"], hate: ["용족 사탕", "크림 브륄레", "용족 세공 사탕", "소프트 크림 브륄레"] },
