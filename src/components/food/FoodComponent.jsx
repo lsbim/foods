@@ -4,6 +4,7 @@ import MyAccordion from "../../commons/Accordion";
 import { charInfo } from "../../data/i18n/charInfo";
 import { getAccoState, updateAccoState } from "../../util/accordionUtils";
 import { useLanguage } from "../../util/langUtils";
+import { foodFamilyMap } from "../../data/food/foodFamilyMap";
 
 const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike, hate, setHate, soso, setSoso }) => {
 
@@ -26,22 +27,50 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
     const foodMap = useMemo(() => {
         const map = {};
 
+        const addFood = (foodName, type, charName) => {
+            if (!map[foodName]) {
+                map[foodName] = { verylike: [], like: [], hate: [], soso: [] };
+            }
+            if (!map[foodName][type].includes(charName)) {
+                map[foodName][type].push(charName);
+            }
+        };
+
         Object.entries(charInfo).forEach(([charName, info]) => {
             if (server === 'global' && !info?.names?.ja) return;
 
             const { food } = info;
             if (!food) return;
 
-            ['verylike', 'like', 'hate', 'soso'].forEach(type => {
-                if (food[type]) {
-                    food[type].forEach(foodName => {
-                        if (!map[foodName]) {
-                            map[foodName] = { verylike: [], like: [], hate: [], soso: [] };
-                        }
-                        map[foodName][type].push(charName);
-                    });
-                }
-            });
+            if (food.verylike) {
+                food.verylike.forEach(baseFood => {
+                    const upperFoods = foodFamilyMap[baseFood] || [];
+                    upperFoods.forEach(uf => addFood(uf, 'verylike', charName)); // value -> verylike
+                    addFood(baseFood, 'like', charName); // key -> like
+                });
+            }
+
+            if (food.like) {
+                food.like.forEach(baseFood => {
+                    const upperFoods = foodFamilyMap[baseFood] || [];
+                    addFood(baseFood, 'like', charName);
+                    upperFoods.forEach(uf => addFood(uf, 'like', charName));
+                });
+            }
+
+            if (food.hate) {
+                food.hate.forEach(baseFood => {
+                    const upperFoods = foodFamilyMap[baseFood] || [];
+                    addFood(baseFood, 'hate', charName);
+                    upperFoods.forEach(uf => addFood(uf, 'hate', charName));
+                });
+            }
+
+            if (food.soso) { // 현재 soso는 로네 송편만
+                food.soso.forEach(baseFood => {
+                    addFood(baseFood, 'soso', charName);
+                });
+            }
         });
 
         return map;
@@ -50,18 +79,51 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
     useEffect(() => {
         const isChar = charInfo[target]?.food;
         if (isChar) {
-            setVerylike(isChar?.verylike)
-            setLike(isChar?.like)
-            setHate(isChar?.hate)
-            setSoso(isChar?.soso)
+            const expVerylike = new Set();
+            const expLike = new Set();
+            const expHate = new Set();
+            const expSoso = new Set();
+
+            if (isChar.verylike) {
+                isChar.verylike.forEach(baseFood => {
+                    const upperFoods = foodFamilyMap[baseFood] || [];
+                    upperFoods.forEach(uf => expVerylike.add(uf)); // 매우만족은 value
+                    expLike.add(baseFood); // 만족은 key
+                });
+            }
+            if (isChar.like) {
+                isChar.like.forEach(baseFood => {
+                    const upperFoods = foodFamilyMap[baseFood] || [];
+                    expLike.add(baseFood);
+                    upperFoods.forEach(uf => expLike.add(uf));
+                });
+            }
+            if (isChar.hate) {
+                isChar.hate.forEach(baseFood => {
+                    const upperFoods = foodFamilyMap[baseFood] || [];
+                    expHate.add(baseFood);
+                    upperFoods.forEach(uf => expHate.add(uf));
+                });
+            }
+            if (isChar.soso) {
+                isChar.soso.forEach(baseFood => {
+                    expSoso.add(baseFood);
+                });
+            }
+
+            setVerylike(Array.from(expVerylike));
+            setLike(Array.from(expLike));
+            setHate(Array.from(expHate));
+            setSoso(Array.from(expSoso));
+
         } else {
             const targetFood = foodMap[target];
 
             if (targetFood) {
-                setVerylike(targetFood?.verylike);
-                setLike(targetFood?.like);
-                setHate(targetFood?.hate);
-                setSoso(targetFood?.soso);
+                setVerylike(targetFood.verylike || []);
+                setLike(targetFood.like || []);
+                setHate(targetFood.hate || []);
+                setSoso(targetFood.soso || []);
             } else {
                 setVerylike([]);
                 setLike([]);
@@ -115,11 +177,13 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
     }, [server, personality]);
 
     // console.log(persGroup)
+    // console.log(foodMap)
+    // console.log(`target: ${target}\n\nverylike: ${verylike}\nlike: ${like}\nhate: ${hate}`)
 
     const handleSetTarget = useCallback((t) => {
         setTarget(prev => {
             const next = prev === t ? "" : t;
-    
+
             if (next && window.gtag) {
                 window.gtag('event', 'select_target', {
                     target_name: next,
@@ -127,7 +191,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                     target_type: charInfo[next] ? 'character' : 'food',
                 });
             }
-    
+
             return next;
         });
     }, [setTarget])
