@@ -174,7 +174,7 @@ const MyAccordion = ({
                             return (
                                 <button
                                     key={'item_' + item}
-                                    className={`group hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative sm:p-2 p-1 ${itemWidth} ${targetColor(item)} rounded-md`}
+                                    className={`group hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative sm:p-2 p-1 ${itemWidth} ${targetColor(item)} rounded-md ${!isTargetAndLike(item) ? 'opacity-70' : ''}`}
                                     onClick={() => handleSetTarget(item)}>
 
                                     <div className="flex flex-col justify-center items-center relative ">
@@ -189,7 +189,7 @@ const MyAccordion = ({
                                             ) : (
                                                 <img
                                                     src={`${imgUrl}${item}.webp`}
-                                                    className={`w-full h-auto aspect-square object-contain block rounded-t-md ${type === 'food' && !isTargetAndLike(item) ? 'opacity-60' : ''}`}
+                                                    className={`w-full h-auto aspect-square object-contain block rounded-t-md`}
                                                     alt={name}
                                                     title={name}
                                                 />

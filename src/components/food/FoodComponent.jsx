@@ -271,6 +271,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                                     handleSetTarget={handleSetTarget}
                                     t={t}
                                     howMuchLike={howMuchLike}
+                                    isTargetAndLike={isTargetAndLike}
                                     type='character'
                                 />
                             </div>
