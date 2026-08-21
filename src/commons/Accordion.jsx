@@ -168,12 +168,13 @@ const MyAccordion = ({
                             const imgUrl = `${import.meta.env.BASE_URL}/images/` + (type === 'character' ? 'character/profile/' : 'food/')
                             // const grade = server === 'global' ? charInfo[c].stats.global?.grade || charInfo[c].stats.default?.grade : charInfo[c].stats.default?.grade;
 
+                            const itemWidth = items.length > 29 ? 'md:w-[14.286%] xs:w-1/5 w-1/4' : 'md:w-1/6 xs:w-1/4 w-1/3'
                             // console.log(persGroup)
 
                             return (
                                 <button
                                     key={'item_' + item}
-                                    className={`group hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative sm:p-2 p-1 md:w-1/6 xs:w-1/4 w-1/3 ${targetColor(item)} rounded-md`}
+                                    className={`group hover:bg-orange-200 cursor-pointer flex flex-col justify-center relative sm:p-2 p-1 ${itemWidth} ${targetColor(item)} rounded-md`}
                                     onClick={() => handleSetTarget(item)}>
 
                                     <div className="flex flex-col justify-center items-center relative ">
@@ -222,7 +223,7 @@ const MyAccordion = ({
 }
 
 
-const charListHeaderColor = (t) => {
+function charListHeaderColor(t) {
 
     return t === '순수' ? 'bg-[rgb(102,193,124)]'
         : t === '냉정' ? 'bg-[rgb(131,185,235)]'
@@ -232,7 +233,7 @@ const charListHeaderColor = (t) => {
                         : t === '공명' ? `bg-gradient-to-r from-[rgb(131,185,235)] to-[rgb(198,131,236)]` : '';
 }
 
-const charListHeaderShadow = (t) => {
+function charListHeaderShadow(t) {
 
     return t === '순수' ? 'shadow-[4px_4px_0_0_rgba(102,193,124,0.2)]'
         : t === '냉정' ? 'shadow-[4px_4px_0_0_rgba(131,185,235,0.2)]'
