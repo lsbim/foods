@@ -345,7 +345,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "광기" } }
     },
     "피라": {
-        names: { ko: "피라", en: "Pira", 'zh-CN': "皮拉", 'zh-TW': "", ja: "" },
+        names: { ko: "피라", en: "Pira", 'zh-CN': "皮拉", 'zh-TW': "", ja: "ピラ" },
         food: { like: ["비밀의 포도주스", "용족 사탕"], hate: ["캔 사료", "보석 타르트"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
