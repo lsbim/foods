@@ -32,7 +32,7 @@ const CharacterSearch = ({ setTarget }) => {
         <header className="fixed flex items-center justify-center gap-4 py-4 bg-white/90 backdrop-blur-sm w-full z-40 shadow-[0_4px_0_0_rgba(230,230,230,0.4)]">
             <div className="items-center gap-x-4 lg:inline hidden">
                 <span className="text-[24px] font-bold">
-                    트릭컬 연회장 음식 호불호
+                    트릭컬 연회장
                 </span>
             </div>
             <div className="flex items-center gap-x-1">
