@@ -182,14 +182,14 @@ const MyAccordion = ({
                                             {type === 'character' ? (
                                                 <img
                                                     src={`${imgUrl}${item}.webp`}
-                                                    className="w-full h-full object-cover object-top origin-top scale-[1.5]"
+                                                    className={`w-full h-full object-cover object-top origin-top scale-[1.5] transition ${targetColor(item) ? 'scale-[1.6] duration-200' : ''}`}
                                                     alt={name}
                                                     title={name}
                                                 />
                                             ) : (
                                                 <img
                                                     src={`${imgUrl}${item}.webp`}
-                                                    className={`w-full h-auto aspect-square object-contain block rounded-t-md`}
+                                                    className={`w-full h-auto aspect-square object-contain block rounded-t-md transition ${targetColor(item) ? 'scale-[1.1] duration-200' : ''}`}
                                                     alt={name}
                                                     title={name}
                                                 />
