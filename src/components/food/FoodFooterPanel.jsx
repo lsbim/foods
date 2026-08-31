@@ -53,7 +53,7 @@ const FoodFooterPanel = ({
                                         />
                                         <img
                                             src={imagePath('icon', item.label)}
-                                            className="absolute sm:top-[-2px] sm:right-[-2px] top-[-2px] right-[-2px] md:w-6 w-5 rotate-[18deg]"
+                                            className="absolute sm:top-[-2px] sm:right-[-2px] top-[-2px] right-[-2px] lg:w-6 w-5 rotate-[18deg]"
                                         />
                                     </div>
                                 ))}
