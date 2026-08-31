@@ -1,5 +1,6 @@
 import { useState } from "react";
 import FoodComponent from "../components/food/FoodComponent";
+import FoodFooterPanel from "../components/food/FoodFooterPanel";
 import CharacterSearch from "../layouts/CharacterSearch";
 import Footer from "../layouts/Footer";
 
@@ -33,10 +34,12 @@ const IndexPage = () => {
                     soso={soso}
                     setSoso={setSoso}
                 />
-
-                {/* {target && target?.length > 0 &&
-                    <SelectedObjComponent />
-                } */}
+                <FoodFooterPanel
+                    target={target}
+                    verylike={verylike}
+                    like={like}
+                    hate={hate}
+                />
                 <Footer />
             </div>
         </div>

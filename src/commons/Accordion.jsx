@@ -1,6 +1,7 @@
 import * as Accordion from '@radix-ui/react-accordion';
 import React from 'react';
 import { charInfo } from '../data/i18n/charInfo';
+import { imagePath } from '../constants/path';
 
 
 
@@ -81,7 +82,7 @@ const MyAccordion = ({
                                             className="lg:pl-2 md:pl-1 flex font-semibold whitespace-nowrap"
                                             title="그럭저럭">
                                             <img
-                                                src={`${import.meta.env.BASE_URL}/images/icon/soso.webp`}
+                                                src={imagePath('icon', 'soso')}
                                                 className={`md:w-6 w-3 mr-1 flex items-center object-contain`}
                                                 alt={'그럭저럭'}
                                                 title={'그럭저럭'} />
@@ -98,7 +99,7 @@ const MyAccordion = ({
                                                     className="pl-2 flex items-center font-semibold whitespace-nowrap"
                                                     title="매우좋아함">
                                                     <img
-                                                        src={`${import.meta.env.BASE_URL}/images/icon/verylike.webp`}
+                                                        src={imagePath('icon', 'verylike')}
                                                         className={`md:w-6 w-3 mr-1 object-contain`}
                                                         alt={'매우좋아함'}
                                                         title={'매우좋아함'} />
@@ -112,7 +113,7 @@ const MyAccordion = ({
                                                     className="pl-2 flex items-center font-semibold whitespace-nowrap"
                                                     title="좋아함">
                                                     <img
-                                                        src={`${import.meta.env.BASE_URL}/images/icon/like.webp`}
+                                                        src={imagePath('icon', 'like')}
                                                         className={`md:w-6 w-3 mr-1 object-contain`}
                                                         alt={'좋아함'}
                                                         title={'좋아함'} />
@@ -126,7 +127,7 @@ const MyAccordion = ({
                                                     className="pl-2 flex items-center font-semibold whitespace-nowrap"
                                                     title="싫어함">
                                                     <img
-                                                        src={`${import.meta.env.BASE_URL}/images/icon/hate.webp`}
+                                                        src={imagePath('icon', 'hate')}
                                                         className={`md:w-6 w-3 mr-1 object-contain`}
                                                         alt={'싫어함'}
                                                         title={'싫어함'} />
@@ -165,11 +166,7 @@ const MyAccordion = ({
                         {items.map((item) => {
 
                             const name = type === 'character' ? t(`char.${item}`) : item;
-                            const imgUrl = `${import.meta.env.BASE_URL}/images/` + (type === 'character' ? 'character/profile/' : 'food/')
-                            // const grade = server === 'global' ? charInfo[c].stats.global?.grade || charInfo[c].stats.default?.grade : charInfo[c].stats.default?.grade;
-
                             const itemWidth = items.length > 29 ? 'md:w-[14.286%] xs:w-1/5 w-1/4' : 'md:w-1/6 xs:w-1/4 w-1/3'
-                            // console.log(persGroup)
 
                             return (
                                 <button
@@ -181,15 +178,15 @@ const MyAccordion = ({
                                         <div className={`inline-block w-full overflow-hidden ${getPersonalityBg(itemsKey, item)} bg-opacity-60`}>
                                             {type === 'character' ? (
                                                 <img
-                                                    src={`${imgUrl}${item}.webp`}
-                                                    className={`w-full h-full object-cover object-top origin-top scale-[1.5] transition ${targetColor(item) ? 'scale-[1.6] duration-200' : ''}`}
+                                                    src={imagePath(type, item)}
+                                                    className={`will-change-transform w-full h-full object-cover object-top origin-top scale-[1.5] transition ${targetColor(item) ? 'scale-[1.6] duration-200' : ''}`}
                                                     alt={name}
                                                     title={name}
                                                 />
                                             ) : (
                                                 <img
-                                                    src={`${imgUrl}${item}.webp`}
-                                                    className={`w-full h-auto aspect-square object-contain block rounded-t-md transition ${targetColor(item) ? 'scale-[1.1] duration-200' : ''}`}
+                                                    src={imagePath(type, item)}
+                                                    className={`will-change-transform w-full h-auto aspect-square object-contain block rounded-t-md transition ${targetColor(item) ? 'scale-[1.1] duration-200' : ''}`}
                                                     alt={name}
                                                     title={name}
                                                 />
@@ -197,7 +194,7 @@ const MyAccordion = ({
                                         </div>
                                         {howMuchLike(item) && (
                                             <img
-                                                src={`${import.meta.env.BASE_URL}/images/icon/${howMuchLike(item)}.webp`}
+                                                src={imagePath('icon', howMuchLike(item))}
                                                 className="absolute sm:top-[-8px] sm:right-[-10px] top-[-4px] right-[-5px] w-6 rotate-[18deg]"
                                                 alt={name}
                                                 title={name}

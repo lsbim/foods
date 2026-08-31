@@ -4,6 +4,7 @@ import { useCharSearch } from "../hooks/useCharSearch";
 import { recentSearch } from "../util/recentSearch";
 import LangSelector from "./LangSelector";
 import ServerSelector from "./ServerSelector";
+import { imagePath } from "../constants/path";
 
 const CharacterSearch = ({ setTarget }) => {
     const [search, setSearch] = useState('');
@@ -81,7 +82,7 @@ const CharacterSearch = ({ setTarget }) => {
                                             className="min-w-0 overflow-hidden group cursor-pointer flex flex-col items-center max-h-[100px] sm:basis-1/3 basis-1/2">
                                             <div className="overflow-hidden">
                                                 <img
-                                                    src={`${import.meta.env.BASE_URL}/images/character/profile/${name}.webp`}
+                                                    src={imagePath('character', name)}
                                                     className="object-cover object-top origin-top scale-[1.5] group-hover:scale-[1.65] duration-300 transition-transform ease-out"
                                                     alt={charName}
                                                     title={charName} />
@@ -121,7 +122,7 @@ const CharacterSearch = ({ setTarget }) => {
                                             <div className="flex items-center gap-x-1 xs:text-[13px] text-[11px]">
                                                 <div className="overflow-hidden">
                                                     <img
-                                                        src={`${import.meta.env.BASE_URL}/images/character/profile/${recent}.webp`}
+                                                        src={imagePath('character', recent)}
                                                         className="h-[24px] w-auto object-cover object-top origin-top scale-[1.5]"
                                                         alt={charName}
                                                         title={charName} />

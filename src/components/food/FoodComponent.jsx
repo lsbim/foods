@@ -224,62 +224,60 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
     }, [verylike, like, hate, soso])
 
     return (
-        <div className="">
-            <div>
-                <div className="flex justify-between">
-                    {/* 음식칸 */}
-                    <div className="relative md:mr-8 mr-2 max-w-[47%]">
-                        {foodGradeList.map((l) => (
-                            <div key={'foodList_' + l} className="w-full">
-                                <MyAccordion
-                                    open={accoState[l] ?? true}
-                                    onOpenChange={(open) => handleAccoState(l, open)}
-                                    itemsKey={l}
-                                    items={foodGrade[l]}
-                                    targetColor={targetColor}
-                                    handleSetTarget={handleSetTarget}
-                                    howMuchLike={howMuchLike}
-                                    isTargetAndLike={isTargetAndLike}
-                                    type='food'
-                                    foodBonus={foodBonus}
-                                    language={language}
-                                    verylike={verylike}
-                                    like={like}
-                                    hate={hate}
-                                    target={target}
-                                />
-                            </div>
-                        ))}
-                        {server !== 'kr' && (
-                            <div className="absolute -top-8 left-0 pl-2 text-[14px] font-bold">
-                                First Bonus: +40
-                            </div>
-                        )}
-                    </div>
-                    {/* 사도칸 */}
-                    <div className="relative min-w-[47%] max-w-[47%]">
-                        {/* 성격 블럭 */}
-                        {personality.map((p) => (
-                            <div key={'pers_' + p} className={`w-full`}>
-                                <MyAccordion
-                                    open={accoState[p] ?? true}
-                                    onOpenChange={(open) => handleAccoState(p, open)}
-                                    itemsKey={p}
-                                    headerText={t(`personality.${p}`)}
-                                    items={persGroup[p]}
-                                    targetColor={targetColor}
-                                    handleSetTarget={handleSetTarget}
-                                    t={t}
-                                    howMuchLike={howMuchLike}
-                                    isTargetAndLike={isTargetAndLike}
-                                    type='character'
-                                />
-                            </div>
-                        ))}
-                    </div>
+        <div>
+            <div className="flex justify-between">
+                {/* 음식칸 */}
+                <div className="relative md:mr-8 mr-2 max-w-[47%]">
+                    {foodGradeList.map((l) => (
+                        <div key={'foodList_' + l} className="w-full">
+                            <MyAccordion
+                                open={accoState[l] ?? true}
+                                onOpenChange={(open) => handleAccoState(l, open)}
+                                itemsKey={l}
+                                items={foodGrade[l]}
+                                targetColor={targetColor}
+                                handleSetTarget={handleSetTarget}
+                                howMuchLike={howMuchLike}
+                                isTargetAndLike={isTargetAndLike}
+                                type='food'
+                                foodBonus={foodBonus}
+                                language={language}
+                                verylike={verylike}
+                                like={like}
+                                hate={hate}
+                                target={target}
+                            />
+                        </div>
+                    ))}
+                    {server !== 'kr' && (
+                        <div className="absolute -top-8 left-0 pl-2 text-[14px] font-bold">
+                            First Bonus: +40
+                        </div>
+                    )}
+                </div>
+                {/* 사도칸 */}
+                <div className="relative min-w-[47%] max-w-[47%]">
+                    {/* 성격 블럭 */}
+                    {personality.map((p) => (
+                        <div key={'pers_' + p} className={`w-full`}>
+                            <MyAccordion
+                                open={accoState[p] ?? true}
+                                onOpenChange={(open) => handleAccoState(p, open)}
+                                itemsKey={p}
+                                headerText={t(`personality.${p}`)}
+                                items={persGroup[p]}
+                                targetColor={targetColor}
+                                handleSetTarget={handleSetTarget}
+                                t={t}
+                                howMuchLike={howMuchLike}
+                                isTargetAndLike={isTargetAndLike}
+                                type='character'
+                            />
+                        </div>
+                    ))}
                 </div>
             </div>
-        </div >
+        </div>
     );
 }
 
