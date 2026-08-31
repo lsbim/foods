@@ -186,7 +186,7 @@ const MyAccordion = ({
                                             ) : (
                                                 <img
                                                     src={imagePath(type, item)}
-                                                    className={`will-change-transform w-full h-auto aspect-square object-contain block rounded-t-md transition ${targetColor(item) ? 'scale-[1.1] duration-200' : ''}`}
+                                                    className={`will-change-transform w-full h-auto aspect-square object-contain block rounded-t-md`}
                                                     alt={name}
                                                     title={name}
                                                 />
