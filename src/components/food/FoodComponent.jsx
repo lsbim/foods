@@ -227,7 +227,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
         <div>
             <div className="flex justify-between">
                 {/* 음식칸 */}
-                <div className="relative md:mr-8 mr-2 max-w-[47%]">
+                <div className="relative max-w-[47%] min-w-[47%]">
                     {foodGradeList.map((l) => (
                         <div key={'foodList_' + l} className="w-full">
                             <MyAccordion
