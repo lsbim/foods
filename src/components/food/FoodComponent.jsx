@@ -76,6 +76,10 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
         return map;
     }, [server]);
 
+    const validFoods = useMemo(() => {
+        return new Set(Object.values(foodGrade).flat());
+    }, [foodGrade]);
+
     useEffect(() => {
         const isChar = charInfo[target]?.food;
         if (isChar) {
@@ -84,31 +88,33 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             const expHate = new Set();
             const expSoso = new Set();
 
+            const addIfValid = (set, food) => {
+                if (validFoods.has(food)) set.add(food);
+            };
+
             if (isChar.verylike) {
                 isChar.verylike.forEach(baseFood => {
                     const upperFoods = foodFamilyMap[baseFood] || [];
-                    upperFoods.forEach(uf => expVerylike.add(uf)); // 매우만족은 value
-                    expLike.add(baseFood); // 만족은 key
+                    upperFoods.forEach(uf => addIfValid(expVerylike, uf));
+                    addIfValid(expLike, baseFood);
                 });
             }
             if (isChar.like) {
                 isChar.like.forEach(baseFood => {
                     const upperFoods = foodFamilyMap[baseFood] || [];
-                    expLike.add(baseFood);
-                    upperFoods.forEach(uf => expLike.add(uf));
+                    addIfValid(expLike, baseFood);
+                    upperFoods.forEach(uf => addIfValid(expLike, uf));
                 });
             }
             if (isChar.hate) {
                 isChar.hate.forEach(baseFood => {
                     const upperFoods = foodFamilyMap[baseFood] || [];
-                    expHate.add(baseFood);
-                    upperFoods.forEach(uf => expHate.add(uf));
+                    addIfValid(expHate, baseFood);
+                    upperFoods.forEach(uf => addIfValid(expHate, uf));
                 });
             }
             if (isChar.soso) {
-                isChar.soso.forEach(baseFood => {
-                    expSoso.add(baseFood);
-                });
+                isChar.soso.forEach(baseFood => addIfValid(expSoso, baseFood));
             }
 
             setVerylike(Array.from(expVerylike));
@@ -131,7 +137,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                 setSoso([]);
             }
         }
-    }, [target, server, foodMap])
+    }, [target, server, foodMap, validFoods])
 
     useEffect(() => {
         if (target) {
