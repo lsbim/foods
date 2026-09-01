@@ -47,16 +47,27 @@ export const LanguageProvider = ({ children }) => {
     const foodGradeList = useMemo(() => {
         return server === 'kr' ? foodGradeListKo : foodGradeListGlobal
     }, [server]);
+
     const foodGrade = useMemo(() => {
         return server === 'kr' ? foodGradeKo : foodGradeGlobal
     }, [server]);
+
     const foodBonus = useMemo(() => {
         return server === 'kr' ? foodBonusKo : foodBonusGlobal
     }, [server]);
 
+    const foodGradeMap = useMemo(() => {
+        const map = {};
+        Object.entries(foodGrade).forEach(([grade, foods]) => {
+            foods.forEach((food) => { map[food] = Number(grade); });
+        });
+        return map;
+    }, [foodGrade]);
+
     const personality = useMemo(() => {
         return server === 'kr' ? typeList : typeList.filter(type => type !== '공명')
     }, [server]);
+    
     return (
         <LanguageContext.Provider value={{
             foodGradeList,
@@ -66,6 +77,7 @@ export const LanguageProvider = ({ children }) => {
             server,
             setServer,
             personality,
+            foodGradeMap,
         }}>
             {children}
         </LanguageContext.Provider>

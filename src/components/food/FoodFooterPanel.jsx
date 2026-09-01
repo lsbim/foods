@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from 'motion/react';
 import React from 'react';
 import { imagePath } from '../../constants/path';
 import { charInfo } from '../../data/i18n/charInfo';
+import { useLanguage } from '../../util/langUtils';
+import { foodListHeaderColor } from '../../styles/commonStyle';
 
 const FoodFooterPanel = ({
     target,
@@ -9,6 +11,7 @@ const FoodFooterPanel = ({
     like,
     hate
 }) => {
+    const { foodGradeMap } = useLanguage();
 
     const isCharacter = target ? Object.hasOwn(charInfo, target) : false;
 
@@ -42,21 +45,31 @@ const FoodFooterPanel = ({
                         {Object.entries(panelConfig).map(([grade, item]) => (
                             <div
                                 key={`panel_${grade}`}
-                                className="relative flex gap-1">
-                                {item.data.map(data => (
-                                    <div
-                                        key={`panel_${data}`}
-                                        className="relative lg:w-14 w-10 overflow-hidden">
-                                        <img
-                                            src={imagePath('food', data)}
-                                            className={`w-full h-auto aspect-square object-contain`}
-                                        />
-                                        <img
-                                            src={imagePath('icon', item.label)}
-                                            className="absolute sm:top-[-2px] sm:right-[-2px] top-[-2px] right-[-2px] lg:w-6 w-5 rotate-[18deg]"
-                                        />
-                                    </div>
-                                ))}
+                                className="relative flex gap-[2px]">
+                                {item.data.map(data => {
+
+                                    const plateColor = foodListHeaderColor(foodGradeMap[data]);
+
+                                    return (
+                                        <div
+                                            key={`panel_${data}`}
+                                            className="relative lg:w-14 w-10 overflow-hidden">
+                                            {/* 음식 */}
+                                            <img
+                                                src={imagePath('food', data)}
+                                                className={`w-full h-auto aspect-square object-contain relative z-20`}
+                                            />
+                                            {/* 호불호 아이콘 */}
+                                            <img
+                                                src={imagePath('icon', item.label)}
+                                                className="absolute sm:top-[-2px] sm:right-[-2px] top-[-2px] right-[-2px] lg:w-6 w-4 rotate-[18deg] z-30"
+                                            />
+                                            {/* 접시 */}
+                                            <div className={`absolute left-0 bottom-0 w-full h-3/5 rounded-lg ${plateColor}`}
+                                            />
+                                        </div>
+                                    )
+                                })}
                             </div>
                         ))}
                     </div>

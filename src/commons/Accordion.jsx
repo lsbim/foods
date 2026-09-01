@@ -1,7 +1,8 @@
 import * as Accordion from '@radix-ui/react-accordion';
 import React from 'react';
-import { charInfo } from '../data/i18n/charInfo';
 import { imagePath } from '../constants/path';
+import { charInfo } from '../data/i18n/charInfo';
+import { foodListHeaderColor } from '../styles/commonStyle';
 
 
 
@@ -238,16 +239,6 @@ function charListHeaderShadow(t) {
                 : t === '활발' ? 'shadow-[4px_4px_0_0_rgba(235,219,131,0.2)]'
                     : t === '우울' ? 'shadow-[4px_4px_0_0_rgba(198,131,236,0.2)]'
                         : t === '공명' ? `shadow-[4px_4px_0_0_rgba(131,185,235,0.2)] shadow-[4px_4px_0_0_rgba(198,131,236,0.2)]` : '';
-}
-
-function foodListHeaderColor(l) {
-
-    return l === 5 ? 'bg-[rgb(244,232,163)]'
-        : l === 4 ? 'bg-[rgb(196,142,253)]'
-            : l === 3 ? 'bg-[rgb(109,175,246)]'
-                : l === 2 ? 'bg-[rgb(114,216,133)]'
-                    : l === 1 ? 'bg-[rgb(193,193,193)]'
-                        : l === 0 ? 'bg-[rgb(230,230,230)]' : '';
 }
 
 function foodListHeaderShadow(l) {
