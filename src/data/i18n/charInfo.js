@@ -400,7 +400,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "광기" } }
     },
     "로니": {
-        names: { ko: "로니", en: "Ronnie", 'zh-CN': "", 'zh-TW': "", ja: "" },
+        names: { ko: "로니", en: "Ronnie", 'zh-CN': "罗尼", 'zh-TW': "", ja: "" },
         food: { verylike: ["비밀의 포도주스"], like: ["금탕후루"], hate: ["우주식량", "유령 푸딩"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
