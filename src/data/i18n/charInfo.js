@@ -37,7 +37,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "순수" } }
     },
     "셰럼": {
-        names: { ko: "셰럼", en: "Sherum", 'zh-CN': "夏乐", 'zh-TW': "", ja: "" },
+        names: { ko: "셰럼", en: "Sherum", 'zh-CN': "夏乐", 'zh-TW': "", ja: "シェルム" },
         food: { like: ["따뜻한 아이스 아메리카노", "마시멜로 마카롱"], hate: ["민트 초코 아이스크림", "캬라멜 팝콘"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
@@ -700,7 +700,7 @@ export const charInfo = {
         stats: { default: { grade: 2, type: "우울" } }
     },
     "바리에": {
-        names: { ko: "바리에", en: "Barie", 'zh-CN': "巴丽叶", 'zh-TW': "", ja: "" },
+        names: { ko: "바리에", en: "Barie", 'zh-CN': "巴丽叶", 'zh-TW': "", ja: "バリエ" },
         food: { verylike: ["마시멜로 마카롱"], like: ["UFC 당근 튀김"], hate: ["용족 사탕", "따뜻한 아이스 아메리카노"] },
         stats: { default: { grade: 2, type: "우울" } }
     },
