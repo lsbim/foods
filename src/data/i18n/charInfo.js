@@ -399,6 +399,11 @@ export const charInfo = {
         food: { verylike: ["금탕후루"], like: ["비밀의 포도주스"], hate: ["매듭 빵", "코코넛 솔잎죽"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
+    "로니": {
+        names: { ko: "로니", en: "Ronnie", 'zh-CN': "", 'zh-TW': "", ja: "" },
+        food: { verylike: ["비밀의 포도주스"], like: ["금탕후루"], hate: ["우주식량", "유령 푸딩"] },
+        stats: { default: { grade: 3, type: "광기" } }
+    },
     "마에스트로 2호": {
         names: { ko: "마에스트로 2호", en: "MaestroMK2", 'zh-CN': "大师2号", 'zh-TW': "", ja: "マエストロMK2" },
         food: { verylike: ["석류석 열매"], like: ["비밀의 포도주스"], hate: ["미숫가루", "유령 푸딩"] },
