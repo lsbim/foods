@@ -264,6 +264,11 @@ export const charInfo = {
         food: { verylike: ["캬라멜 팝콘"], like: ["크림 브륄레"], hate: ["해초 샐러드", "우주식량"] },
         stats: { default: { grade: 3, type: "냉정" } }
     },
+    "우이(기억)": {
+        names: { ko: "우이(기억)", en: "Ui(Memory)", 'zh-CN': "雨伊(记忆)", 'zh-TW': "", ja: "" },
+        food: { verylike: ["해초 샐러드"], like: ["만화 고기 구이"], hate: ["따뜻한 아이스 아메리카노", "호박 스프"] },
+        stats: { default: { grade: 3, type: "냉정" } }
+    },
     "에스피": {
         names: { ko: "에스피", en: "Espi", 'zh-CN': "埃斯皮", 'zh-TW': "", ja: "エスピー" },
         food: { verylike: ["초콜릿 아이스크림"], like: ["UFC 당근 튀김"], hate: ["캬라멜 팝콘", "꿀단지"] },
@@ -731,5 +736,10 @@ export const charInfo = {
         names: { ko: "우로스", en: "Uros", 'zh-CN': "乌洛斯", 'zh-TW': "", ja: "" },
         food: { verylike: ["만화 고기 구이"], like: ["캔 사료"], hate: ["한입초 쌈", "초콜릿 아이스크림"] },
         stats: { default: { grade: 3, type: "공명" } }
-    }
+    },
+    "비비(신성)": {
+        names: { ko: "비비(신성)", en: "Vivi(Divine)", 'zh-CN': "薇薇(神圣)", 'zh-TW': "", ja: "" },
+        food: { verylike: ["따뜻한 아이스 아메리카노"], like: ["계피맛 알사탕"], hate: ["캔 사료", "공기 커틀릿"] },
+        stats: { default: { grade: 3, type: "공명" } }
+    },
 };
