@@ -32,6 +32,7 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
             if (!map[foodName]) {
                 map[foodName] = { verylike: [], like: [], hate: [], soso: [] };
             }
+            if (type === 'like' && map[foodName].verylike.includes(charName)) return; // 극호, 선호 겹침 방지 ex) 셰럼 등
             if (!map[foodName][type].includes(charName)) {
                 map[foodName][type].push(charName);
             }
@@ -45,9 +46,13 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
 
             if (food.verylike) {
                 food.verylike.forEach(baseFood => {
-                    const upperFoods = foodFamilyMap[baseFood] || [];
-                    upperFoods.forEach(uf => addFood(uf, 'verylike', charName)); // value -> verylike
-                    addFood(baseFood, 'like', charName); // key -> like
+                    const upperFoods = foodFamilyMap[baseFood];
+                    if (upperFoods) {
+                        upperFoods.forEach(uf => addFood(uf, 'verylike', charName)); // value -> verylike
+                        addFood(baseFood, 'like', charName); // key -> like
+                    } else {
+                        addFood(baseFood, 'verylike', charName); // 개쩜 음식만 넣기 ex)셰럼, 칸타, 피라
+                    }
                 });
             }
 
@@ -95,9 +100,13 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
 
             if (isChar.verylike) {
                 isChar.verylike.forEach(baseFood => {
-                    const upperFoods = foodFamilyMap[baseFood] || [];
-                    upperFoods.forEach(uf => addIfValid(expVerylike, uf));
-                    addIfValid(expLike, baseFood);
+                    const upperFoods = foodFamilyMap[baseFood];
+                    if (upperFoods) {
+                        upperFoods.forEach(uf => addIfValid(expVerylike, uf));
+                        addIfValid(expLike, baseFood);
+                    } else {
+                        addIfValid(expVerylike, baseFood);
+                    }
                 });
             }
             if (isChar.like) {
@@ -118,6 +127,8 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
                 isChar.soso.forEach(baseFood => addIfValid(expSoso, baseFood));
             }
 
+            expVerylike.forEach(food => expLike.delete(food));
+            
             setVerylike(Array.from(expVerylike));
             setLike(Array.from(expLike));
             setHate(Array.from(expHate));

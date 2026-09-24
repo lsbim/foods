@@ -38,7 +38,7 @@ export const charInfo = {
     },
     "셰럼": {
         names: { ko: "셰럼", en: "Sherum", 'zh-CN': "夏乐", 'zh-TW': "", ja: "シェルム" },
-        food: { like: ["따뜻한 아이스 아메리카노", "마시멜로 마카롱"], hate: ["민트 초코 아이스크림", "캬라멜 팝콘"] },
+        food: { verylike: ["앗뜨거 앗차거 아메리카노"], like: ["따뜻한 아이스 아메리카노", "마시멜로 마카롱"], hate: ["민트 초코 아이스크림", "캬라멜 팝콘"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
     "오팔": {
@@ -281,7 +281,7 @@ export const charInfo = {
     },
     "칸타": {
         names: { ko: "칸타", en: "Canta", 'zh-CN': "康塔", 'zh-TW': "", ja: "" },
-        food: { like: ["딸기 케이크", "캔 사료"], hate: ["레몬차", "공기 커틀릿"] },
+        food: { verylike: ["에심당 딸기 케이크"], like: ["딸기 케이크", "캔 사료"], hate: ["레몬차", "공기 커틀릿"] },
         stats: { default: { grade: 2, type: "냉정" } }
     },
     "레이지": {
@@ -351,7 +351,7 @@ export const charInfo = {
     },
     "피라": {
         names: { ko: "피라", en: "Pira", 'zh-CN': "皮拉", 'zh-TW': "", ja: "ピラ" },
-        food: { like: ["비밀의 포도주스", "용족 사탕"], hate: ["캔 사료", "보석 타르트"] },
+        food: { verylike: ["용감한 사탕"], like: ["비밀의 포도주스", "용족 사탕"], hate: ["캔 사료", "보석 타르트"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
     "폴랑": {
