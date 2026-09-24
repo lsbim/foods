@@ -381,7 +381,7 @@ export const charInfo = {
     },
     "하이디": {
         names: { ko: "하이디", en: "Heidi", 'zh-CN': "海蒂", 'zh-TW': "", ja: "" },
-        food: { verylike: ["보석 타르트"], like: ["보석 타르트", "매듭 빵"], hate: ["우주식량", "쌀밥 한 공기"] },
+        food: { verylike: ["보석 타르트"], like: ["매듭 빵"], hate: ["우주식량", "쌀밥 한 공기"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
     "다야(퓨어샤인)": {
@@ -396,7 +396,7 @@ export const charInfo = {
     },
     "실비아": {
         names: { ko: "실비아", en: "Silvia", 'zh-CN': "希尔维娅", 'zh-TW': "", ja: "" },
-        food: { verylike: ["레몬차"], like: ["레몬차"], hate: ["만화 고기 구이", "캔 사료"] },
+        food: { verylike: ["레몬차"], like: ["보석 타르트"], hate: ["만화 고기 구이", "캔 사료"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
     "스키아": {
