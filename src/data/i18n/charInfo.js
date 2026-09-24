@@ -637,9 +637,12 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "우울" } }
     },
     "죠안": {
-        names: { ko: "죠안", en: "Joanne", 'zh-CN': "琼安", 'zh-TW': "", ja: "" },
+        names: { ko: "죠안", en: "Joanne", 'zh-CN': "琼安", 'zh-TW': "", ja: "ジョアン" },
         food: { verylike: ["미숫가루"], like: ["민트 초코 아이스크림"], hate: ["딸기 케이크", "마시멜로 마카롱"] },
-        stats: { default: { grade: 3, type: "우울" } }
+        stats: {
+            default: { grade: 3, type: "우울" },
+            global: { grade: 3, type: ["우울", "순수"] }
+        }
     },
     "리온": {
         names: { ko: "리온", en: "Lion", 'zh-CN': "里昂", 'zh-TW': "", ja: "" },

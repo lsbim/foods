@@ -5,6 +5,7 @@ import { charInfo } from "../../data/i18n/charInfo";
 import { getAccoState, updateAccoState } from "../../util/accordionUtils";
 import { useLanguage } from "../../util/langUtils";
 import { foodFamilyMap } from "../../data/food/foodFamilyMap";
+import { getCharTypes } from "../../util/function";
 
 const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike, hate, setHate, soso, setSoso }) => {
 
@@ -158,13 +159,11 @@ const FoodComponent = ({ target, setTarget, verylike, setVerylike, like, setLike
         const isGlobal = server === 'global';
 
         Object.entries(charInfo).forEach(([char, info]) => {
-            // console.log(char, info)
             if (isGlobal && !info?.names?.ja) return;
 
-            const pers = isGlobal
-                ? (info?.stats?.global?.type || info?.stats?.default?.type)
-                : info?.stats?.default?.type;
-            if (group[pers]) group[pers].push(char);
+            getCharTypes(char, isGlobal).forEach(pers => {
+                if (group[pers]) group[pers].push(char);
+            });
         })
 
         const getGrade = (char) => {

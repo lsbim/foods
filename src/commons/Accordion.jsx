@@ -3,6 +3,8 @@ import React from 'react';
 import { imagePath } from '../constants/path';
 import { charInfo } from '../data/i18n/charInfo';
 import { foodListHeaderColor } from '../styles/commonStyle';
+import { useLanguage } from '../util/langUtils';
+import { getCharTypes } from '../util/function';
 
 
 
@@ -26,15 +28,17 @@ const MyAccordion = ({
     hate,
     target
 }) => {
-
-    // console.log(itemsKey, language)
+    const { server } = useLanguage();
 
     const accordionHeaderStyle = (type === 'character' ? `${charListHeaderColor(itemsKey)} ${charListHeaderShadow(itemsKey)}` : `${foodListHeaderColor(itemsKey)} ${foodListHeaderShadow(itemsKey)}`) +
         ' rounded-md p-1 w-full h-8 flex font-bold justify-between items-center cursor-pointer ';
 
-
     const getPersonalityBg = (itemsKey, item) => {
         if (targetColor(item)) return '';
+
+        const types = getCharTypes(item, server === 'global');
+        const dual = types.length > 1 && charDualBg(types);
+        if (dual) return `${dual} group-hover:bg-none`; // 그라디언트는 bg-none 처리
 
         return `${charListHeaderColor(itemsKey)} group-hover:bg-transparent`;
     };
@@ -229,6 +233,12 @@ function charListHeaderColor(t) {
                 : t === '활발' ? 'bg-[rgb(235,219,131)]'
                     : t === '우울' ? 'bg-[rgb(198,131,236)]'
                         : t === '공명' ? `bg-gradient-to-r from-[rgb(131,185,235)] to-[rgb(198,131,236)]` : '';
+}
+
+function charDualBg(types) {
+
+    return types.join('/') === '우울/순수'
+        ? 'bg-gradient-to-r from-[rgba(198,131,236,0.6)] from-40% to-[rgba(102,193,124,0.6)] to-60%' : '';
 }
 
 function charListHeaderShadow(t) {
