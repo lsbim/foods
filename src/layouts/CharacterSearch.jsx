@@ -1,10 +1,11 @@
+import React from 'react';
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { imagePath } from "../constants/path";
 import { useCharSearch } from "../hooks/useCharSearch";
 import { recentSearch } from "../util/recentSearch";
 import LangSelector from "./LangSelector";
 import ServerSelector from "./ServerSelector";
-import { imagePath } from "../constants/path";
 
 const CharacterSearch = ({ setTarget }) => {
     const [search, setSearch] = useState('');
@@ -150,4 +151,4 @@ const CharacterSearch = ({ setTarget }) => {
     );
 }
 
-export default CharacterSearch;
+export default React.memo(CharacterSearch);
