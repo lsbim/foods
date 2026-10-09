@@ -210,7 +210,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "냉정" } }
     },
     "코미(수영복)": {
-        names: { ko: "코미(수영복)", en: "Kommy(Swimsuit)", 'zh-CN': "柯米(泳装)", 'zh-TW': "", ja: "" },
+        names: { ko: "코미(수영복)", en: "Kommy(Swimsuit)", 'zh-CN': "柯米(泳装)", 'zh-TW': "", ja: "コミー(水着)" },
         food: { verylike: ["캔 사료"], like: ["캬라멜 팝콘"], hate: ["UFC 당근 튀김", "만화 고기 구이"] },
         stats: { default: { grade: 3, type: "냉정" } }
     },
