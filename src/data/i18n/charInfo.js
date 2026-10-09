@@ -275,7 +275,7 @@ export const charInfo = {
         stats: { default: { grade: 2, type: "냉정" } }
     },
     "레테": {
-        names: { ko: "레테", en: "Lethe", 'zh-CN': "勒忒", 'zh-TW': "", ja: "" },
+        names: { ko: "레테", en: "Lethe", 'zh-CN': "勒忒", 'zh-TW': "", ja: "レーテー" },
         food: { verylike: ["용족 사탕"], like: ["공기 커틀릿"], hate: ["해초 샐러드", "코코넛 솔잎죽"] },
         stats: { default: { grade: 2, type: "냉정" } }
     },
