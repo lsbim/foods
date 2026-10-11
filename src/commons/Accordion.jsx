@@ -183,6 +183,7 @@ const MyAccordion = ({
                                         <div className={`inline-block w-full overflow-hidden ${getPersonalityBg(itemsKey, item)} bg-opacity-60`}>
                                             {type === 'character' ? (
                                                 <img
+                                                    loading='lazy'
                                                     src={imagePath(type, item)}
                                                     className={`will-change-transform w-full h-full object-cover object-top origin-top scale-[1.5] transition ${targetColor(item) ? 'scale-[1.6] duration-200' : ''}`}
                                                     alt={name}
@@ -190,6 +191,7 @@ const MyAccordion = ({
                                                 />
                                             ) : (
                                                 <img
+                                                    loading='lazy'
                                                     src={imagePath(type, item)}
                                                     className={`will-change-transform w-full h-auto aspect-square object-contain block rounded-t-md`}
                                                     alt={name}
