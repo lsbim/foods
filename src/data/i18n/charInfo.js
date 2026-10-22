@@ -285,7 +285,7 @@ export const charInfo = {
         stats: { default: { grade: 2, type: "냉정" } }
     },
     "레이지": {
-        names: { ko: "레이지", en: "Lazy", 'zh-CN': "雷吉", 'zh-TW': "", ja: "レイジー" },
+        names: { ko: "레이지", en: "Layze", 'zh-CN': "雷吉", 'zh-TW': "", ja: "レイジー" },
         food: { verylike: ["캔 사료"], like: ["따뜻한 아이스 아메리카노"], hate: ["매듭 빵", "비밀의 포도주스"] },
         stats: {
             default: { grade: 1, type: "냉정" },
@@ -456,12 +456,12 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "활발" } }
     },
     "루드": {
-        names: { ko: "루드", en: "Rude", 'zh-CN': "鲁德", 'zh-TW': "", ja: "ルード" },
+        names: { ko: "루드", en: "Rudd", 'zh-CN': "鲁德", 'zh-TW': "", ja: "ルード" },
         food: { verylike: ["미숫가루"], like: ["우주식량"], hate: ["한입초 쌈", "쌀밥 한 공기"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
     "셀리네": {
-        names: { ko: "셀리네", en: "Selline", 'zh-CN': "赛琳娜", 'zh-TW': "", ja: "セリーネ" },
+        names: { ko: "셀리네", en: "Selene", 'zh-CN': "赛琳娜", 'zh-TW': "", ja: "セリーネ" },
         food: { verylike: ["유령 푸딩"], like: ["비밀의 포도주스"], hate: ["마시멜로 마카롱", "레몬차"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
