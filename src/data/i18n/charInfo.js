@@ -269,6 +269,11 @@ export const charInfo = {
         food: { verylike: ["해초 샐러드"], like: ["만화 고기 구이"], hate: ["따뜻한 아이스 아메리카노", "호박 스프"] },
         stats: { default: { grade: 3, type: "냉정" } }
     },
+    "코페": {
+        names: { ko: "코페", en: "Coffe", 'zh-CN': "", 'zh-TW': "", ja: "" },
+        food: { verylike: ["따뜻한 아이스 아메리카노"], like: ["매듭 빵"], hate: ["해초 샐러드", "크림 브륄레"] },
+        stats: { default: { grade: 3, type: "냉정" } }
+    },
     "에스피": {
         names: { ko: "에스피", en: "Espi", 'zh-CN': "埃斯皮", 'zh-TW': "", ja: "エスピー" },
         food: { verylike: ["초콜릿 아이스크림"], like: ["UFC 당근 튀김"], hate: ["캬라멜 팝콘", "꿀단지"] },
