@@ -220,7 +220,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "냉정" } }
     },
     "그윈": {
-        names: { ko: "그윈", en: "Gwynn", 'zh-CN': "格温", 'zh-TW': "", ja: "" },
+        names: { ko: "그윈", en: "Guin", 'zh-CN': "格温", 'zh-TW': "", ja: "グウィン" },
         food: { verylike: ["허니갈릭 살몬"], like: ["민트 초코 아이스크림"], hate: ["용족 사탕", "캔 사료"] },
         stats: { default: { grade: 3, type: "냉정" } }
     },
