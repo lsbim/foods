@@ -270,7 +270,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "냉정" } }
     },
     "코페": {
-        names: { ko: "코페", en: "Coffe", 'zh-CN': "", 'zh-TW': "", ja: "" },
+        names: { ko: "코페", en: "Coffe", 'zh-CN': "可菲", 'zh-TW': "", ja: "" },
         food: { verylike: ["따뜻한 아이스 아메리카노"], like: ["매듭 빵"], hate: ["해초 샐러드", "크림 브륄레"] },
         stats: { default: { grade: 3, type: "냉정" } }
     },
