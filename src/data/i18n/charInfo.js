@@ -550,6 +550,11 @@ export const charInfo = {
         food: { verylike: ["UFC 당근 튀김"], like: ["캬라멜 팝콘"], hate: ["석류석 열매", "멜론 보코치니"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
+    "두두": {
+        names: { ko: "두두", en: "Dudu", 'zh-CN': "嘟嘟", 'zh-TW': "", ja: "" },
+        food: { verylike: ["금탕후루"], like: ["초콜릿 아이스크림"], hate: [] },
+        stats: { default: { grade: 3, type: "활발" } }
+    },
     "마리": {
         names: { ko: "마리", en: "Marie", 'zh-CN': "玛丽", 'zh-TW': "", ja: "マリー" },
         food: { verylike: ["UFC 당근 튀김"], like: ["크림 브륄레"], hate: ["계피맛 알사탕", "석류석 열매"] },
