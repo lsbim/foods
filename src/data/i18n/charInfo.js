@@ -360,7 +360,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "광기" } }
     },
     "폴랑": {
-        names: { ko: "폴랑", en: "Polan", 'zh-CN': "破朗", 'zh-TW': "", ja: "" },
+        names: { ko: "폴랑", en: "Polan", 'zh-CN': "破朗", 'zh-TW': "", ja: "ポラン" },
         food: { verylike: ["딸기 케이크"], like: ["쌀밥 한 공기"], hate: ["크림 브륄레", "비밀의 포도주스"] },
         stats: { default: { grade: 3, type: "광기" } }
     },
