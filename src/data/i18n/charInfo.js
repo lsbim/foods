@@ -552,7 +552,7 @@ export const charInfo = {
     },
     "두두": {
         names: { ko: "두두", en: "Dudu", 'zh-CN': "嘟嘟", 'zh-TW': "", ja: "" },
-        food: { verylike: ["금탕후루"], like: ["초콜릿 아이스크림"], hate: [] },
+        food: { verylike: ["금탕후루"], like: ["초콜릿 아이스크림"], hate: ["해초 샐러드","호박 스프"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
     "마리": {
