@@ -501,7 +501,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "활발" } }
     },
     "스피키(메이드)": {
-        names: { ko: "스피키(메이드)", en: "Speaki(Maid)", 'zh-CN': "斯碧琪(女仆)", 'zh-TW': "", ja: "" },
+        names: { ko: "스피키(메이드)", en: "Speaki(Maid)", 'zh-CN': "斯碧琪(女仆)", 'zh-TW': "", ja: "スピッキー(メイド)" },
         food: { verylike: ["계피맛 알사탕"], like: ["석류석 열매"], hate: ["매듭 빵", "호박 스프"] },
         stats: { default: { grade: 3, type: "활발" } }
     },
