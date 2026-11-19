@@ -96,6 +96,11 @@ export const charInfo = {
         food: { verylike: ["비밀의 포도주스"], like: ["크림 브륄레"], hate: ["우주식량", "코코넛 솔잎죽"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
+    "아이리스": {
+        names: { ko: "아이리스", en: "Iris", 'zh-CN': "", 'zh-TW': "", ja: "" },
+        food: { verylike: ["딸기 케이크"], like: ["한입초 쌈"], hate: ["우주식량", "캔 사료"] },
+        stats: { default: { grade: 3, type: "순수" } }
+    },
     "가비아": {
         names: { ko: "가비아", en: "Gabia", 'zh-CN': "加维亚", 'zh-TW': "", ja: "ガヴィア" },
         food: { verylike: ["계피맛 알사탕"], like: ["레몬차"], hate: ["용족 사탕", "크림 브륄레"] },
