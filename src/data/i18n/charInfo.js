@@ -97,7 +97,7 @@ export const charInfo = {
         stats: { default: { grade: 3, type: "순수" } }
     },
     "아이리스": {
-        names: { ko: "아이리스", en: "Iris", 'zh-CN': "", 'zh-TW': "", ja: "" },
+        names: { ko: "아이리스", en: "Iris", 'zh-CN': "伊丽丝", 'zh-TW': "", ja: "" },
         food: { verylike: ["딸기 케이크"], like: ["한입초 쌈"], hate: ["우주식량", "캔 사료"] },
         stats: { default: { grade: 3, type: "순수" } }
     },
